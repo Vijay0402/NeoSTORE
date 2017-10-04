@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorRed</item>
+    </style>
+    <style name="edtLogUsername">
+        <item name="android:background">@drawable/drawable_username</item>
+        <item name="android:hint">@string/login_username</item>
+        <item name="android:textSize">@dimen/main_forget_password</item>
+        <item name="android:drawableLeft">@drawable/username_person</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorWhite</item>
+                
+    </style>
+    <style name="edtLogPassword">
+        <item name="android:hint">@string/login_password</item>
+        <item name="android:textSize">@dimen/main_login_password</item>
+        <item name="android:drawableLeft">@drawable/password_lock</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="android:background">@drawable/drawable_username</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        
+    </style>
+    <style name="btnLogin">
+        <item name="android:textSize">@dimen/main_login_button</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:background">@drawable/drawable_button</item>
+        
+    </style>
+    <style name="txtAccount">
+      <item name="android:textSize">@dimen/main_account</item>
+      <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="tlbarRegistration">
+      <item name="android:elevation">4dp</item>
+        <item name="android:background">@color/tlbarRegistration</item>
+      <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+      <item name="android:popupTheme">@style/Theme.AppCompat.Light</item>
+
+    </style>
+    <style name="txtGender">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+    <style name="txtMaleFemale">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+
+
+</resources>

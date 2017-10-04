@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_login_header">50sp</dimen>
+    <dimen name="margin_username_top">49dp</dimen>
+    <dimen name="margin_forget_top">20dp</dimen>
+    <dimen name="main_login_username">18sp</dimen>
+    <dimen name="main_login_password">18sp</dimen>
+    <dimen name="main_login_button">26sp</dimen>
+    <dimen name="main_forget_password">18sp</dimen>
+    <dimen name="main_account">16sp</dimen>
+
+</resources>

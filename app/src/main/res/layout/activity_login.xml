@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="neosoft.training.neostore.view.login.LoginActivity"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp"
+    android:paddingBottom="13dp"
+    >
+
+    <TextView
+        android:id="@+id/txtNeoStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="@string/mainLoginHeader"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/main_login_header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:id="@+id/edtLogUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/edtLogUsername"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/txtNeoStore"
+        android:layout_alignRight="@+id/edtLogPassword"
+        android:layout_alignEnd="@+id/edtLogPassword" />
+
+    <EditText
+        android:id="@+id/edtLogPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtLogUsername"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        style="@style/edtLogPassword"
+        />
+
+       <Button
+           android:id="@+id/btnLogin"
+           style="@style/btnLogin"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:text="@string/login_button"
+           android:layout_below="@+id/edtLogPassword"
+           android:layout_marginTop="@dimen/margin_username_top"
+
+           />
+
+       <TextView
+        android:id="@+id/txtForget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/main_forget_password"
+        android:layout_below="@+id/btnLogin"
+        android:text="@string/login_forget"
+        android:layout_marginTop="@dimen/main_forget_password"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorWhite"
+        />
+    <TextView
+        android:id="@+id/txtAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_account"
+        android:layout_alignParentBottom="true"
+        style="@style/txtAccount"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="15dp"
+        />
+    <ImageView
+        android:id="@+id/txtPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/log_add"
+        android:background="@drawable/drawable_add"
+        />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">NeoSTORE</string>
+    <string name="mainLoginHeader">NeoSTORE</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_button">LOGIN</string>
+    <string name="login_forget">Forget Password?</string>
+    <string name="login_account">DONT HAVE AN ACCOUNT?</string>
+    <string name="register_header">Register</string>
+    <string name="register_firstname">First Name</string>
+    <string name="register_lastname">Last Name</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirmPassword">Confirm Password</string>
+    <string name="register_gender">Gender</string>
+    <string name="register_male">Male</string>
+    <string name="register_female">Female</string>
+    <string name="register_phoneno">Phone Number</string>
+    <string name="register_terms">I agree the </string>
+    <string name="register_condition">Terms &amp; Conditions</string>
+
+
+    <string name="registerbutton_register">REGISTER</string>
+
+</resources>

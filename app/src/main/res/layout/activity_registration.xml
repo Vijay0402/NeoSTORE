@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="neosoft.training.neostore.view.login.RegistrationActivity"
+
+    >
+<include
+    layout="@layout/toolbar"
+    />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+   <TextView
+          android:id="@+id/txtNeoStore"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:text="@string/mainLoginHeader"
+          android:textColor="@color/colorWhite"
+          android:textSize="@dimen/main_login_header"
+          android:layout_centerHorizontal="true" />
+
+   <EditText
+       android:id="@+id/edtRegFirstName"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:ems="10"
+       style="@style/edtLogUsername"
+       android:inputType="textPersonName"
+       android:hint="@string/register_firstname"
+       android:layout_below="@+id/txtNeoStore"
+       android:layout_centerHorizontal="true" />
+
+   <EditText
+       android:id="@+id/edtRegLastName"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="13dp"
+       android:ems="10"
+       style="@style/edtLogUsername"
+       android:inputType="textPersonName"
+       android:hint="@string/register_lastname"
+       android:layout_below="@+id/edtRegFirstName"
+       android:layout_alignStart="@+id/edtRegFirstName" />
+
+    <EditText
+        android:id="@+id/edtRegEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        style="@style/edtLogUsername"
+        android:inputType="textEmailAddress"
+        android:hint="@string/register_email"
+        android:layout_below="@+id/edtRegLastName"
+        android:layout_alignStart="@+id/edtRegFirstName"
+        android:drawableLeft="@drawable/reg_email"/>
+
+    <EditText
+        android:id="@+id/edtRegPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        style="@style/edtLogUsername"
+        android:inputType="textPassword"
+        android:hint="@string/register_password"
+        android:layout_below="@+id/edtRegEmail"
+        android:layout_alignStart="@+id/edtRegEmail"
+        android:drawableLeft="@drawable/reg_password"
+        />
+
+    <EditText
+        android:id="@+id/edtRegConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        style="@style/edtLogUsername"
+        android:inputType="textPassword"
+        android:hint="@string/register_confirmPassword"
+        android:layout_below="@+id/edtRegPassword"
+        android:layout_alignStart="@+id/edtRegFirstName"
+        android:drawableLeft="@drawable/reg_confirmpassword"
+        />
+
+  <LinearLayout
+      android:id="@+id/rdGender"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_below="@+id/edtRegConfirmPassword"
+      android:layout_marginTop="23dp"
+      android:layout_marginLeft="29dp"
+      >
+      <TextView
+          android:id="@+id/txtGender"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_marginRight="20dp"
+          android:layout_gravity="center"
+          android:text="@string/register_gender"
+          style="@style/txtGender"
+          />
+      <RadioGroup
+          android:layout_width="match_parent"
+          android:orientation="horizontal"
+          android:layout_height="wrap_content"
+          android:weightSum="2"
+          >
+      <RadioButton
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:paddingLeft="5dp"
+          android:text="@string/register_male"
+          style="@style/txtMaleFemale"
+
+          android:button="@drawable/draw_radio_state"
+          />
+      <RadioButton
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+         android:layout_weight="1"
+          android:paddingLeft="5dp"
+          android:text="@string/register_female"
+          style="@style/txtMaleFemale"
+          android:button="@drawable/draw_radio_state"
+
+          />
+      </RadioGroup>
+  </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtRegPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        style="@style/edtLogUsername"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:hint="@string/register_phoneno"
+        android:drawableLeft="@drawable/reg_phone"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/rdGender"
+        android:layout_alignStart="@+id/edtRegConfirmPassword" />
+<LinearLayout
+    android:id="@+id/tandc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/edtRegPhone"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="13dp"
+    android:orientation="horizontal"
+    >
+    <CheckBox
+        android:id="@+id/txtRegTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_terms"
+        android:textColor="@color/colorWhite"
+        android:paddingLeft="5dp"
+        android:button="@drawable/drawable_reg_check_state"
+        style="@style/txtAccount"
+
+        />
+    <TextView
+        android:id="@+id/txtRegCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_condition"
+        android:paddingLeft="5dp"
+        android:textColor="@color/colorWhite"
+        style="@style/txtAccount"
+
+         />
+</LinearLayout>
+
+    <Button
+
+        android:id="@+id/btnRegRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tandc"
+        style="@style/btnLogin"
+        android:layout_marginTop="23dp"
+        android:text="@string/registerbutton_register"
+        android:layout_centerInParent="true"
+        />
+
+  </RelativeLayout>
+</ScrollView>
+</LinearLayout>
