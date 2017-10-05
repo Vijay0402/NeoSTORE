@@ -125,13 +125,12 @@
           android:paddingLeft="5dp"
           android:text="@string/register_male"
           style="@style/txtMaleFemale"
-
           android:button="@drawable/draw_radio_state"
           />
       <RadioButton
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
-         android:layout_weight="1"
+          android:layout_weight="1"
           android:paddingLeft="5dp"
           android:text="@string/register_female"
           style="@style/txtMaleFemale"
@@ -153,7 +152,9 @@
         android:drawableLeft="@drawable/reg_phone"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/rdGender"
-        android:layout_alignStart="@+id/edtRegConfirmPassword" />
+        android:layout_alignStart="@+id/edtRegConfirmPassword"
+
+        />
 <LinearLayout
     android:id="@+id/tandc"
     android:layout_width="match_parent"
@@ -180,10 +181,11 @@
         android:layout_height="wrap_content"
         android:text="@string/register_condition"
         android:paddingLeft="5dp"
+        android:layout_margin="2dp"
         android:textColor="@color/colorWhite"
         style="@style/txtAccount"
 
-         />
+     />
 </LinearLayout>
 
     <Button

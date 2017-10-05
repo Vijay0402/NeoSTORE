@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#BB0100</color>
+    <color name="colorPrimaryDark">#9E0100</color>
+    <color name="colorAccent">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorRed">#E91C1A</color>
+    <color name="colorRed">#E91B1A</color>
     <color name="colorAdd">#9e0100</color>
-    <color name="tlbarRegistration">#e91b1a</color>
+    <color name="color_tlbarRegistration">#bb0100</color>
+    <color name="color_navigation_background">#2c2b2b</color>
 </resources>

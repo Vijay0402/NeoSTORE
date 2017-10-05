@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="neosoft.training.neostore.view.login.LoginActivity"
-    android:paddingLeft="13dp"
-    android:paddingRight="13dp"
-    android:paddingBottom="13dp"
+    android:paddingLeft="33dp"
+    android:paddingRight="33dp"
+    android:paddingBottom="23dp"
     >
 
     <TextView
@@ -24,13 +24,17 @@
 
     <EditText
         android:id="@+id/edtLogUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         style="@style/edtLogUsername"
         android:layout_marginTop="48dp"
+        android:ems="10"
         android:layout_below="@+id/txtNeoStore"
         android:layout_alignRight="@+id/edtLogPassword"
-        android:layout_alignEnd="@+id/edtLogPassword" />
+        android:layout_alignEnd="@+id/edtLogPassword"
+        android:maxLines="1"
+        android:inputType="textEmailAddress"
+        />
 
     <EditText
         android:id="@+id/edtLogPassword"
@@ -40,6 +44,8 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         style="@style/edtLogPassword"
+        android:maxLines="1"
+        android:inputType="textPassword"
         />
 
        <Button

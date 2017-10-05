@@ -18,8 +18,22 @@
     <string name="register_phoneno">Phone Number</string>
     <string name="register_terms">I agree the </string>
     <string name="register_condition">Terms &amp; Conditions</string>
-
-
     <string name="registerbutton_register">REGISTER</string>
+
+    <string name="my_cart">My Cart</string>
+    <string name="tables">Tables</string>
+    <string name="sofas">Sofas</string>
+    <string name="chairs">Chairs</string>
+    <string name="cupboards">Cupboards</string>
+    <string name="my_account">My Account</string>
+    <string name="store_locator">Store Locator</string>
+    <string name="my_orders">My Orders</string>
+    <string name="logout_nav">Logout</string>
+
+    <string name="action_search_title">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
