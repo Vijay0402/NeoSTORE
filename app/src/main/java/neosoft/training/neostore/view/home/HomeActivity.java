@@ -1,54 +1,59 @@
 package neosoft.training.neostore.view.home;
 
-import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import me.relex.circleindicator.CircleIndicator;
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
+import neosoft.training.neostore.view.Product.ProductListingActivity;
+import neosoft.training.neostore.view.address.AddAddressActivity;
 
 public class HomeActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;
-    private Toolbar toolbar;
+    private Toolbar toolbarH;
     private TextView homeToolbarTitle;
     private ViewPager mViewPager;
-    Integer[] viewPagerImages={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
-    ArrayList<Integer> imgViewPagerArray=new ArrayList<>();
+    ImageView imgTable,imgSofa,imgChair,imgCupboard;
 
-    int numPages=4;
+
+    Integer[] viewPagerImagesArray ={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
+    ArrayList<Integer> imgViewPager =new ArrayList<>();
+
+    int currentPages=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initView();
-
-        init();// call for view pager imgViewPagerArray
-        setSupportActionBar(toolbar);
+        init();
+        circleIndicator();
+        productListeners();
+        // call for view pager imgViewPager
+        setSupportActionBar(toolbarH);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.nav_menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         homeToolbarTitle.setText(R.string.mainLoginHeader);
 
-        //custom view pager Adapter
-       /* mPagerAdapter=new ViewPagerSliderAdapter(this,imgViewPagerArray);
-        mViewPager.setAdapter(mPagerAdapter);*/
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -72,6 +77,8 @@ public class HomeActivity extends BaseActivity {
                     case R.id.navigation_item_storelocator:
                         return true;
                     case R.id.navigation_item_myorders:
+                        Intent intent=new Intent(HomeActivity.this, AddAddressActivity.class);
+                        startActivity(intent);
                         return true;
                     case R.id.navigation_item_logout:
                         return true;
@@ -81,20 +88,88 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
-    private void init() {
-        for(int i=0; i<viewPagerImages.length;i++)
-            imgViewPagerArray.add(viewPagerImages[i]);
-        mViewPager=findViewById(R.id.view_pager);
-        mViewPager.setAdapter(new ViewPagerSliderAdapter(HomeActivity.this,imgViewPagerArray));
-    }
-
     private void initView() {
-        toolbar=findViewById(R.id.toolbar);
+        toolbarH =findViewById(R.id.toolbar);
         mDrawerLayout=findViewById(R.id.drawerLayout);
         navigationView=findViewById(R.id.navigation_view);
-        homeToolbarTitle=toolbar.findViewById(R.id.toolbarTitle);
+        homeToolbarTitle= toolbarH.findViewById(R.id.toolbartxtViewTitle);
+        imgTable=findViewById(R.id.imgTable);
+        imgChair=findViewById(R.id.imgChair);
+        imgSofa=findViewById(R.id.imgSofa);
+        imgCupboard=findViewById(R.id.imgCupboard);
 
     }
+    private void productListeners() {
+        imgTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("Title","Tables");
+                startActivity(intent);
+            }
+        });
+        imgSofa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("Title","Sofa");
+                startActivity(intent);
+            }
+        });
+        imgChair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("Title","Chair");
+                startActivity(intent);
+            }
+        });
+        imgCupboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("Title","Cupboard");
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    //Auto start of image slider
+    private void circleIndicator() {
+
+        //circle indicator
+        CircleIndicator indicator=findViewById(R.id.circle_indicator);
+        indicator.setViewPager(mViewPager);
+        // circleIndicator();
+        final Handler handler=new Handler();
+        final Runnable runnableUpdate=new Runnable() {
+            @Override
+            public void run() {
+                if(currentPages == viewPagerImagesArray.length)
+                {
+                    currentPages=0;
+                }
+                mViewPager.setCurrentItem(currentPages++,true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(runnableUpdate);
+            }
+        },2500,2500);
+
+    }
+
+    private void init() {
+        for(int i = 0; i< viewPagerImagesArray.length; i++)
+            imgViewPager.add(viewPagerImagesArray[i]);
+        mViewPager=findViewById(R.id.view_pager);
+        mViewPager.setAdapter(new HomeBannerSliderAdapter(HomeActivity.this, imgViewPager));
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,43 +193,4 @@ public class HomeActivity extends BaseActivity {
     }
 
 
-    private class ViewPagerSliderAdapter extends PagerAdapter{
-
-        ArrayList<Integer> imgViewPagerArray =new ArrayList<>();
-        LayoutInflater inflater;
-        Context context;
-        ImageView imageView;
-
-        public ViewPagerSliderAdapter(Context context, ArrayList<Integer> imgViewPagerArray) {
-           this.context=context;
-           this.imgViewPagerArray =imgViewPagerArray;
-           inflater=LayoutInflater.from(context);
-        }
-
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View)object);
-        }
-
-        @Override
-        public int getCount() {
-            return imgViewPagerArray.size();
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-           View imgLayout=inflater.inflate(R.layout.fragment_home,container,false);
-            imageView=imgLayout.findViewById(R.id.imgViewPager);
-            imageView.setImageResource(imgViewPagerArray.get(position));
-            container.addView(imgLayout,0);
-            return imgLayout;
-
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view.equals(object);
-        }
     }
-}

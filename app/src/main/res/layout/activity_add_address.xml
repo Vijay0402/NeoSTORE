@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/grey_background_address"
+    android:fitsSystemWindows="true"
+
+    tools:context="neosoft.training.neostore.view.address.AddAddressActivity"
+    >
+           <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/thirteen"
+        android:paddingRight="@dimen/thirteen"
+
+        >
+
+        <TextView
+        android:id="@+id/txtAddress_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/txtAddress_id"
+        android:text="@string/address"
+
+        />
+
+    <EditText
+        android:id="@+id/edtAddress_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/edtAddressMargin"
+        android:background="@drawable/draw_address_field"
+        android:gravity="top"
+        android:maxLines="5"
+        android:inputType="textNoSuggestions|textMultiLine"
+        android:ems="10"
+        />
+
+    <TextView
+        android:id="@+id/txtCity_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/txtAddress_id"
+        android:text="@string/city"
+
+
+        />
+
+    <EditText
+        android:id="@+id/edtCity_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/edtAddressMargin"
+        android:background="@drawable/draw_address_editfield"
+        android:singleLine="true"
+        android:inputType="textNoSuggestions"
+        android:ems="10"
+        />
+
+
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:weightSum="4"
+        >
+
+
+      <LinearLayout
+
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="2">
+
+          <TextView
+              android:id="@+id/txtcity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/city"
+              style="@style/txtAddress_id"
+              />
+          <EditText
+              android:id="@+id/edtcity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/edtCity"
+              android:singleLine="true"
+              android:inputType="textNoSuggestions"
+
+              />
+          <TextView
+              android:id="@+id/txtZipcode"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/txtAddress_id"
+              android:text="@string/zipcode"
+              />
+
+          <EditText
+              android:id="@+id/edtZipcode"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/edtCity"
+              android:inputType="number|textNoSuggestions"
+              android:maxLength="6"
+
+              />
+      </LinearLayout>
+
+      <LinearLayout
+
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:layout_marginLeft="@dimen/fourteen"
+          >
+          <TextView
+              android:id="@+id/txtState"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/state"
+              style="@style/txtAddress_id"
+              />
+          <EditText
+              android:id="@+id/edtState"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/edtCity"
+              android:inputType="textNoSuggestions"
+              android:singleLine="true"
+              />
+          <TextView
+              android:id="@+id/txtCountry"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/txtAddress_id"
+              android:text="@string/country"
+              />
+
+          <EditText
+              android:id="@+id/edtCountry"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/edtCity"
+              android:singleLine="true"
+              android:inputType="textNoSuggestions"
+
+              />
+      </LinearLayout>
+
+    </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btnSaveAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/btnSaveAddress"
+            android:text="@string/save_address"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="neosoft.training.neostore.view.login.RegistrationActivity"
-
+   android:background="@color/colorRed"
     >
 <include
     layout="@layout/toolbar"
@@ -26,7 +27,7 @@
           android:layout_marginTop="20dp"
           android:text="@string/mainLoginHeader"
           android:textColor="@color/colorWhite"
-          android:textSize="@dimen/main_login_header"
+          android:textSize="@dimen/fifty"
           android:layout_centerHorizontal="true" />
 
    <EditText
@@ -36,6 +37,7 @@
        android:layout_marginTop="20dp"
        android:ems="10"
        style="@style/edtLogUsername"
+       android:drawableLeft="@drawable/username_icon"
        android:inputType="textPersonName"
        android:hint="@string/register_firstname"
        android:layout_below="@+id/txtNeoStore"
@@ -47,6 +49,7 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="13dp"
        android:ems="10"
+       android:drawableLeft="@drawable/username_icon"
        style="@style/edtLogUsername"
        android:inputType="textPersonName"
        android:hint="@string/register_lastname"

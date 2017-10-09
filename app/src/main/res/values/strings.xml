@@ -1,4 +1,7 @@
 <resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="app_name">NeoSTORE</string>
     <string name="mainLoginHeader">NeoSTORE</string>
     <string name="login_username">Username</string>
@@ -32,8 +35,21 @@
 
     <string name="action_search_title">Search</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="toolar_product_header">Tables</string>
+
+    <string name="add_address">Add Address</string>
+    <string name="address">ADDRESS</string>
+    <string name="city">CITY</string>
+    <string name="state">STATE</string>
+    <string name="zipcode">ZIP CODE</string>
+    <string name="country">COUNTRY</string>
+    <string name="save_address">SAVE ADDRESS</string>
+
+    <string name="product_name">6 seater Table</string>
+    <string name="product_category">Category Tables</string>
+    <string name="product_description">Future furniture table</string>
+    <string name="product_price">Rs Price</string>
+
 
 
 </resources>

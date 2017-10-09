@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="main_login_header">50sp</dimen>
-    <dimen name="margin_username_top">49dp</dimen>
-    <dimen name="margin_forget_top">20dp</dimen>
-    <dimen name="main_login_username">18sp</dimen>
+    <dimen name="fifty">50sp</dimen>
+    <dimen name="fourtyNine">49sp</dimen>
+
+    <dimen name="eighteen">18sp</dimen>
     <dimen name="main_login_password">18sp</dimen>
     <dimen name="main_login_button">26sp</dimen>
     <dimen name="main_forget_password">18sp</dimen>
-    <dimen name="main_account">16sp</dimen>
+    <dimen name="sixteen">16sp</dimen>
+    <dimen name="eightyThree">83dp</dimen>
+    <dimen name="seventySeven">77sp</dimen>
+    <dimen name="thirteen">13sp</dimen>
+    <dimen name="thirtyThree">33sp</dimen>
+    <dimen name="hundredTen">110sp</dimen>
+    <dimen name="fifteen">15sp</dimen>
+    <dimen name="ten">10sp</dimen>
+    <dimen name="twenty">20sp</dimen>
+    <dimen name="sixty">60sp</dimen>
+    <dimen name="eleven">11sp</dimen>
+
+    <dimen name="seventeen">17dp</dimen>
+    <dimen name="fourteen">14sp</dimen>
+    <dimen name="twentyseven">27sp</dimen>
+
+    <dimen name="threehundredseventy">370dp</dimen>
+    <dimen name="onetwenty">120dp</dimen>
+    <dimen name="fourty">40dp</dimen>
+
+    <dimen name="sixteenNine">69dp</dimen>
+    <dimen name="seventyNine">79dp</dimen>
+    <dimen name="nine">9dp</dimen>
+    <dimen name="twoFiftySeven">257dp</dimen>
+    <dimen name="oneSeventyEight">178dp</dimen>
+    <dimen name="seven">7dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="twoEighty">280dp</dimen>
+    <dimen name="oneNinety">190dp</dimen>
+    <dimen name="seventyEighty">78dp</dimen>
+    <dimen name="sixtyNine">69dp</dimen>
+
+
+
 
 </resources>

@@ -8,7 +8,7 @@
         android:layout_height="?attr/actionBarSize"
         style="@style/tlbarRegistration">
         <TextView
-            android:id="@+id/toolbarTitle"
+            android:id="@+id/toolbartxtViewTitle"
             android:textColor="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

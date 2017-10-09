@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
@@ -44,8 +45,10 @@ public class LoginActivity extends BaseActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
+
             }
         });
 

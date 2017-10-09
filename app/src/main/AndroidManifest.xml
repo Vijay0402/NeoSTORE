@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.login.RegistrationActivity"></activity>
-        <activity android:name=".view.home.HomeActivity"></activity>
+        <activity android:name=".view.login.RegistrationActivity" />
+        <activity android:name=".view.home.HomeActivity" />
+        <activity android:name=".view.Product.ProductListingActivity" />
+        <activity android:name=".view.address.AddAddressActivity" />
+        <activity android:name=".view.Product.ProductDetailedActivity"></activity>
     </application>
 
 </manifest>

@@ -6,32 +6,123 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="neosoft.training.neostore.view.home.HomeActivity">
+    android:fitsSystemWindows="true"
+    android:statusBarColor="@color/colorRed"
 
-    <include layout="@layout/toolbar"/>
+    tools:context="neosoft.training.neostore.view.home.HomeActivity"
+
+    >
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-        
+        <include layout="@layout/toolbar"/>
 
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/home_main_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="230dp"
+        >
    <android.support.v4.view.ViewPager
        android:id="@+id/view_pager"
-       android:layout_width="fill_parent"
-       android:layout_height="fill_parent"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
        android:layout_alignParentTop="true"
        >
 
    </android.support.v4.view.ViewPager>
-     
-    </LinearLayout>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/circle_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            app:ci_drawable="@drawable/viewpager_circle_indicator_selected"
+            app:ci_drawable_unselected="@drawable/viewpager_circle_indicator_unselected"
+            />
+
+    </RelativeLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/tablesofa"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+
+
+                >
+                <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/imgTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/tableicon"
+                    android:scaleType="centerCrop"
+
+                     />
+                <ImageView
+
+                    android:layout_weight="1"
+                    android:id="@+id/imgSofa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sofaicon"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="12dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/chaircupboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_weight="1"
+                android:layout_marginTop="13dp"
+
+
+                >
+                <ImageView
+                    android:id="@+id/imgChair"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chairsicon"
+                    android:scaleType="centerCrop"
+
+
+
+                    />
+                <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/imgCupboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cupboardicon"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="12dp"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -43,7 +134,7 @@
      app:menu="@menu/drawer"
      app:itemTextColor="@color/colorWhite"
      app:itemIconTint="@color/colorWhite"
-     android:background="@color/color_navigation_background"
+     android:background="@color/color_black"
      android:layout_gravity="start"
      >
 

@@ -6,21 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorRed</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
     </style>
     <style name="edtLogUsername">
         <item name="android:background">@drawable/drawable_username</item>
         <item name="android:hint">@string/login_username</item>
         <item name="android:textSize">@dimen/main_forget_password</item>
-        <item name="android:drawableLeft">@drawable/username_person</item>
+
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:drawablePadding">10dp</item>
+
                 
     </style>
     <style name="edtLogPassword">
         <item name="android:hint">@string/login_password</item>
         <item name="android:textSize">@dimen/main_login_password</item>
-        <item name="android:drawableLeft">@drawable/password_lock</item>
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:background">@drawable/drawable_username</item>
         <item name="android:drawablePadding">5dp</item>
@@ -34,7 +36,7 @@
         
     </style>
     <style name="txtAccount">
-      <item name="android:textSize">@dimen/main_account</item>
+      <item name="android:textSize">@dimen/sixteen</item>
       <item name="android:textColor">@color/colorWhite</item>
     </style>
 
@@ -47,15 +49,68 @@
     </style>
     <style name="txtGender">
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/eighteen</item>
 
     </style>
     <style name="txtMaleFemale">
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/sixteen</item>
+
+    </style>
+    <style name="txtProductListName">
+        <item name="android:textColor">@color/black_color_text</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+
+    </style>
+    <style name="txtProductDescription">
+        <item name="android:textColor">@color/color_grey</item>
+        <item name="android:textSize">@dimen/ten</item>
+    </style>
+
+    <style name="txtProductPrice">
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textSize">@dimen/twenty</item>
+
+        <item name="android:text">@string/product_price</item>
+    </style>
+
+    <style name="txtAddress_id">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/seventeen</item>
+        <item name="android:layout_marginTop">@dimen/twentyseven</item>
 
     </style>
 
+    <style name="edtCity">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/fourteen</item>
+        <item name="android:layout_marginTop">@dimen/seventeen</item>
+        <item name="android:background">@drawable/draw_address_editfield</item>
 
+    </style>
+
+    <style name="edtAddressMargin">
+      <item name="android:layout_marginTop">@dimen/seventeen</item>
+
+    </style>
+
+    <style name="btnSaveAddress">
+        <item name="android:layout_marginTop">@dimen/twentyseven</item>
+        <item name="android:textSize">@dimen/main_login_button</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/draw_btn_save_address</item>
+
+    </style>
+
+    <style name="RatingBar" parent="@style/Base.Widget.AppCompat.RatingBar.Small">
+        <item name="android:width">@dimen/sixty</item>
+        <item name="android:height">@dimen/eleven</item>
+        <item name="android:numStars">5</item>
+         <item name="android:progressTint">@color/yellow</item>
+        <item name="android:stepSize">0.1</item>
+
+
+
+    </style>
 
 </resources>
