@@ -1,4 +1,4 @@
-package neosoft.training.neostore.view.address;
+package neosoft.training.neostore.view.address.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,24 +14,33 @@ import neosoft.training.neostore.common.base.BaseActivity;
 public class AddAddressActivity extends BaseActivity {
    Toolbar toolbarAdd;
    TextView toolbarTitle;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_address);
-        init();
+    public int getContentView() {
+        return R.layout.activity_add_address;
+    }
+
+    @Override
+    public void initView() {
+        toolbarAdd=findViewById(R.id.toolbar);
+        toolbarTitle=toolbarAdd.findViewById(R.id.toolbartxtViewTitle);
+    }
+
+    @Override
+    public void setListeners() {
+
+    }
+
+
+    @Override
+    public void setActionBar() {
         setSupportActionBar(toolbarAdd);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.reg_arrow);
         toolbarTitle.setText(R.string.save_address);
-
     }
 
-    private void init() {
-        toolbarAdd=findViewById(R.id.toolbar);
-        toolbarTitle=toolbarAdd.findViewById(R.id.toolbartxtViewTitle);
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -39,6 +48,5 @@ public class AddAddressActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return true;
     }
-
 
 }

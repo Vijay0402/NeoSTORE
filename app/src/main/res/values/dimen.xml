@@ -39,6 +39,8 @@
     <dimen name="oneNinety">190dp</dimen>
     <dimen name="seventyEighty">78dp</dimen>
     <dimen name="sixtyNine">69dp</dimen>
+    <dimen name="ninety">90dp</dimen>
+    <dimen name="twentyTwo">22dp</dimen>
 
 
 

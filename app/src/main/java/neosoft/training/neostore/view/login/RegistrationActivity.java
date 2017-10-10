@@ -14,35 +14,13 @@ public class RegistrationActivity extends BaseActivity {
    private TextView txtCondition,txtNeostore,txtTerms;
    EditText edtFirstname,edtLastname,edtEmail,edtPassword,edtConfirmPassword,edtPhoneno;
    Toolbar toolbarR;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
-        initView();
-
-        //under
-        txtCondition.setPaintFlags(txtCondition.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-        setSupportActionBar(toolbarR);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.reg_arrow);
-        //Medium fonts
-        Typeface tfbold=Typeface.createFromAsset(getAssets(),"fonts/bold.otf")  ;
-        Typeface tfmed=Typeface.createFromAsset(getAssets(),"fonts/medium.otf")  ;
-        txtNeostore.setTypeface(tfbold);
-        txtCondition.setTypeface(tfmed);
-        txtTerms.setTypeface(tfmed);
-        edtFirstname.setTypeface(tfmed);
-        edtLastname.setTypeface(tfmed);
-        edtEmail.setTypeface(tfmed);
-        edtPassword.setTypeface(tfmed);
-        edtConfirmPassword.setTypeface(tfmed);
-        edtPhoneno.setTypeface(tfmed);
-
+    public int getContentView() {
+        return R.layout.activity_registration;
     }
 
-    private void initView() {
+    public void initView() {
         txtCondition=findViewById(R.id.txtRegCondition);
         txtNeostore=findViewById(R.id.txtNeoStore);
         txtTerms=findViewById(R.id.txtRegTerms);
@@ -54,6 +32,20 @@ public class RegistrationActivity extends BaseActivity {
         edtPhoneno=findViewById(R.id.edtRegPhone);
 
         toolbarR =(Toolbar)findViewById(R.id.toolbar);
+    }
+
+    @Override
+    public void setListeners() {
+
+        setSupportActionBar(toolbarR);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.reg_arrow);
+    }
+
+    @Override
+    public void setActionBar() {
+
     }
 
     @Override

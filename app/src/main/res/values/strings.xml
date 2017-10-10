@@ -50,6 +50,17 @@
     <string name="product_description">Future furniture table</string>
     <string name="product_price">Rs Price</string>
 
+    <string name="description">DESCRIPTION</string>
+    <string name="text_description">Rs fggggggg</string>
+
+    <string name="buy_now">BUY NOW</string>
+    <string name="rate">RATE</string>
+
+    <string name="chooser_title">Share With</string>
+
+    <string name="shipping_address">Shipping Address</string>
+    <string name="address_first">Address First</string>
+
 
 
 </resources>

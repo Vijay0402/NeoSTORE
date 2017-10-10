@@ -16,4 +16,9 @@
 
     <color name="black_prd_detailed_text">#262626</color>
     <color name="black_prd_detailed_description">#111111</color>
+
+    <color name="colorDescription">#111111</color>
+    <color name="colorDescriptionText">#333333</color>
+
+    <color name="colorRateButton">#bfbfbf</color>
 </resources>

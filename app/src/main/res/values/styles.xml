@@ -95,7 +95,7 @@
     </style>
 
     <style name="btnSaveAddress">
-        <item name="android:layout_marginTop">@dimen/twentyseven</item>
+
         <item name="android:textSize">@dimen/main_login_button</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:background">@drawable/draw_btn_save_address</item>
@@ -109,8 +109,41 @@
          <item name="android:progressTint">@color/yellow</item>
         <item name="android:stepSize">0.1</item>
 
+    </style>
 
+    <style name="txtDescription" >
+       <item name="android:textColor">@color/colorDescription</item>
+        <item name="android:textSize">@dimen/ten</item>
 
     </style>
+
+    <style name="txtDescriptionText" >
+        <item name="android:textColor">@color/colorDescriptionText</item>
+        <item name="android:textSize">@dimen/ten</item>
+
+    </style>
+    <style name="btnRateProductDetail">
+
+        <item name="android:textSize">@dimen/main_login_button</item>
+        <item name="android:textColor">@color/color_grey</item>
+        <item name="android:background">@drawable/draw_rate_button</item>
+
+    </style>
+    <style name="txtAddressListShipping">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/twentyTwo</item>
+        <item name="android:layout_marginTop">@dimen/twelve</item>
+        <item name="android:layout_marginBottom">@dimen/twelve</item>
+
+    </style>
+    <style name="txtAddressListDescription">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+        <item name="android:layout_marginTop">@dimen/twelve</item>
+        <item name="android:layout_marginBottom">@dimen/twelve</item>
+
+    </style>
+
+
 
 </resources>

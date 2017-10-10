@@ -8,7 +8,7 @@
     android:background="@color/grey_background_address"
     android:fitsSystemWindows="true"
 
-    tools:context="neosoft.training.neostore.view.address.AddAddressActivity"
+    tools:context="neosoft.training.neostore.view.address.activity.AddAddressActivity"
     >
            <include layout="@layout/toolbar"/>
 
@@ -166,6 +166,7 @@
             android:layout_height="wrap_content"
             style="@style/btnSaveAddress"
             android:text="@string/save_address"
+            android:layout_marginTop="@dimen/twentyseven"
             />
     </LinearLayout>
 

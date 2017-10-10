@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 
 /**
  * Created by webwerks1 on 6/10/17.
@@ -25,6 +24,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     public ProductListingAdapter(Context context) {
 this.context=context;
     }
+
 
     @Override
     public ProductListingAdapter.NumberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

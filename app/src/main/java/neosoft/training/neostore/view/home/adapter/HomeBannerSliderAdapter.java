@@ -1,4 +1,4 @@
-package neosoft.training.neostore.view.home;
+package neosoft.training.neostore.view.home.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -17,14 +17,14 @@ import neosoft.training.neostore.R;
 
 public class HomeBannerSliderAdapter extends PagerAdapter {
 
-    ArrayList<Integer> imgViewPagerArray =new ArrayList<>();
+
     LayoutInflater inflater;
     Context context;
     ImageView imageView;
 
     public HomeBannerSliderAdapter(Context context) {
         this.context=context;
-        this.imgViewPagerArray =imgViewPagerArray;
+
         inflater=LayoutInflater.from(context);
     }
 
@@ -36,14 +36,14 @@ public class HomeBannerSliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return imgViewPagerArray.size();
+        return 4;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View imgLayout=inflater.inflate(R.layout.fragment_home,container,false);
         imageView=imgLayout.findViewById(R.id.imgViewPager);
-        imageView.setImageResource(imgViewPagerArray.get(position));
+        imageView.setImageResource(R.drawable.slider_img1);
         container.addView(imgLayout,0);
         return imgLayout;
     }

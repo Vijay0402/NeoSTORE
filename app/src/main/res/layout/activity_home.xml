@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     android:statusBarColor="@color/colorRed"
 
-    tools:context="neosoft.training.neostore.view.home.HomeActivity"
+    tools:context="neosoft.training.neostore.view.home.activity.HomeActivity"
 
     >
 

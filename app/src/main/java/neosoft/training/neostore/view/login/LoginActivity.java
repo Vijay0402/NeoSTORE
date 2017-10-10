@@ -8,22 +8,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
-import neosoft.training.neostore.view.home.HomeActivity;
+import neosoft.training.neostore.view.home.activity.HomeActivity;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements View.OnClickListener{
    TextView txtNeoStore,txtForget,txtAccount;
    EditText edtUserHint,edtPassHint;
    Button btnLogin;
    ImageView txtPlus;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    public int getContentView() {
+        return R.layout.activity_login;
+    }
+
+    public void initView() {
         txtNeoStore=findViewById(R.id.txtNeoStore);
         txtForget=findViewById(R.id.txtForget);
         txtAccount=findViewById(R.id.txtAccount);
@@ -32,34 +34,34 @@ public class LoginActivity extends BaseActivity {
         txtPlus=findViewById(R.id.txtPlus);
         btnLogin=findViewById(R.id.btnLogin);
 
-        //value from assets
-        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/bold.otf");
-        txtNeoStore.setTypeface(tf,Typeface.BOLD);
-        Typeface tfUserHint = Typeface.createFromAsset(getAssets(),"fonts/medium.otf");
-        edtUserHint.setTypeface(tfUserHint);
-        edtPassHint.setTypeface(tfUserHint);
-        txtForget.setTypeface(tfUserHint);
-        txtAccount.setTypeface(tfUserHint);
+    }
 
+    @Override
+    public void setListeners() {
+        btnLogin.setOnClickListener(this);
+        txtPlus.setOnClickListener(this);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+    @Override
+    public void setActionBar() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch(view.getId()){
+            case R.id.btnLogin:
+                intent=new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
-
-            }
-        });
-
-        txtPlus.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent=new Intent(LoginActivity.this,RegistrationActivity.class);
-               startActivity(intent);
-           }
-       });
+                break;
+            case R.id.txtPlus:
+                intent=new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+                break;
 
 
+        }
     }
 }

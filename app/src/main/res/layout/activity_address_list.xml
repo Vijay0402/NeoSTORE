@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/thirteen"
+
+    tools:context="neosoft.training.neostore.view.address.activity.AddressListActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/txtShipping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shipping_address"
+        style="@style/txtAddressListShipping"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <include layout="@layout/recycler_view"/>
+        <RadioButton
+            android:id="@+id/rdBtnAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/draw_radio_state"
+         />
+
+         <TextView
+            android:id="@+id/txtAddress1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_first"
+
+            style="@style/txtAddressListShipping"
+
+             />
+
+        <TextView
+            android:id="@+id/txtCompleteAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fdhhhghkjfhgkhdfkghdfjk"
+            style="@style/txtAddressListShipping"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

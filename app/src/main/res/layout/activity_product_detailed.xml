@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/grey_background_address"
     android:fitsSystemWindows="true"
-    tools:context="neosoft.training.neostore.view.Product.ProductDetailedActivity">
+    tools:context="neosoft.training.neostore.view.Product.activity.ProductDetailedActivity">
 
     <include layout="@layout/toolbar"/>
     <LinearLayout
@@ -65,7 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:padding="@dimen/twelve"
+        android:paddingLeft="@dimen/ten"
+        android:paddingTop="@dimen/ten"
         android:layout_marginLeft="@dimen/thirteen"
         android:layout_marginRight="@dimen/thirteen"
         >
@@ -76,17 +77,17 @@
       style="@style/txtProductPrice"
 
       />
-
         <ImageView
             android:id="@+id/imgShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/share_product_detailed"
+            android:layout_marginEnd="30dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-
-            />
+            android:padding="@dimen/five"/>
     </RelativeLayout>
+
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -104,27 +105,78 @@
         >
 
     </android.support.v4.view.ViewPager>
+
+    <include layout="@layout/recycler_view"/>
+
 </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+
+     <LinearLayout
+         android:layout_marginTop="@dimen/five"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:background="@color/colorWhite"
+         android:layout_marginLeft="@dimen/thirteen"
+         android:layout_marginRight="@dimen/thirteen"
+         android:layout_marginBottom="@dimen/thirteen"
+
+         android:padding="@dimen/ten"
+         >
+
+         <TextView
+             android:id="@+id/txtDescription"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/product_price"
+             style="@style/txtDescription"
+
+             />
+
+         <TextView
+            android:layout_marginTop="@dimen/five"
+             android:id="@+id/txtDescriptionText"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="@string/text_description"
+             style="@style/txtDescriptionText"
+             />
+
+     </LinearLayout>
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/nine"
+    android:weightSum="2"
+    android:background="@color/colorWhite"
+    android:paddingLeft="@dimen/thirteen"
+    android:paddingRight="@dimen/thirteen"
+    >
+
+    <Button
+        android:id="@+id/btnBuynow"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:layout_marginLeft="@dimen/thirteen"
-        android:layout_marginRight="@dimen/thirteen"
-        >
-        <ImageView
-            android:id="@+id/imgRecyclerProductDetail"
-            android:layout_width="@dimen/seventyEighty"
-            android:layout_height="@dimen/sixtyNine"
-            android:padding="@dimen/five"
+        android:text="@string/buy_now"
+        android:layout_weight="1"
+        style="@style/btnSaveAddress"
+        />
 
-            />
+    <Button
+        android:id="@+id/btnRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rate"
+        android:layout_weight="1"
+        style="@style/btnRateProductDetail"
+        android:layout_marginLeft="@dimen/five"
+
+        />
 
 
-    </LinearLayout>
 
-
+</LinearLayout>
 
 
 
