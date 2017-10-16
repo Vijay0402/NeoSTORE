@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +21,9 @@ import me.relex.circleindicator.CircleIndicator;
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.view.Product.activity.ProductListingActivity;
-import neosoft.training.neostore.view.address.activity.AddAddressActivity;
 import neosoft.training.neostore.view.home.adapter.HomeBannerSliderAdapter;
+import neosoft.training.neostore.view.mycart.activity.MyCartActivity;
+import neosoft.training.neostore.view.order.activity.MyOrderActivity;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,10 +34,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     private ViewPager mViewPager;
     ImageView imgTable,imgSofa,imgChair,imgCupboard;
 
-
     int currentPages=0;
     int maxPages=5;
-
 
     @Override
     public int getContentView() {
@@ -57,13 +55,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         imgCupboard=findViewById(R.id.imgCupboard);
         setAdapter();
         circleIndicator();
-
     }
 
     private void setAdapter() {
         mViewPager.setAdapter(new HomeBannerSliderAdapter(HomeActivity.this));
     }
-
 
     @Override
     public void setListeners() {
@@ -83,7 +79,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         homeToolbarTitle.setText(R.string.mainLoginHeader);
 
     }
-
 
     //Auto start of image slider
     private void circleIndicator() {
@@ -134,7 +129,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void onClick(View view) {
        Intent intent;
@@ -166,10 +160,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         item.setChecked(true);
         mDrawerLayout.closeDrawers();
         switch (item.getItemId()){
             case R.id.navigation_item_mycart:
+              intent=new Intent(HomeActivity.this, MyCartActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.navigation_item_tables:
                 return true;
@@ -184,7 +181,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.navigation_item_storelocator:
                 return true;
             case R.id.navigation_item_myorders:
-                Intent intent=new Intent(HomeActivity.this, AddAddressActivity.class);
+                intent=new Intent(HomeActivity.this, MyOrderActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.navigation_item_logout:

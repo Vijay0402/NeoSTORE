@@ -1,8 +1,9 @@
 package neosoft.training.neostore.view.Product.activity;
 
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,14 +11,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
-import neosoft.training.neostore.view.Product.ProductDetailedAdapter;
+import neosoft.training.neostore.view.Product.adapter.ProductDetailedAdapter;
 import neosoft.training.neostore.view.home.adapter.HomeBannerSliderAdapter;
+import neosoft.training.neostore.view.Product.fragment.EnterQuantityFragment;
+import neosoft.training.neostore.view.Product.fragment.RatingPopupFragment;
 
 public class ProductDetailedActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
    ViewPager viewPager;
@@ -26,6 +30,9 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
    RecyclerView mRecyclerView;
    ProductDetailedAdapter mCustomRecyclerAdapter;
    ImageView imgShare;
+   private Button btnBuynow,btnRatenow;
+
+
 
   // Integer[] imgArray={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
  //  List<String> imgList=new ArrayList<>();
@@ -41,7 +48,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         mRecyclerView.setAdapter(mCustomRecyclerAdapter);
 
 
-
     }
 
     @Override
@@ -53,8 +59,10 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         viewPager=findViewById(R.id.view_pager_prod_detailed);
         mToolbar=findViewById(R.id.toolbar);
         mTxtToolbar=mToolbar.findViewById(R.id.toolbartxtViewTitle);
-        mRecyclerView=findViewById(R.id.recyclerViewDetail);
+        mRecyclerView=findViewById(R.id.recyclerView);
         imgShare=findViewById(R.id.imgShare);
+        btnBuynow=findViewById(R.id.btnBuynow);
+        btnRatenow=findViewById(R.id.btnRate);
 
     }
 
@@ -62,6 +70,9 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     public void setListeners() {
        imgShare.setOnClickListener(this);
        viewPager.addOnPageChangeListener(this);
+       btnBuynow.setOnClickListener(this);
+       btnRatenow.setOnClickListener(this);
+
     }
 
     @Override
@@ -76,7 +87,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
     public void setAdapter() {
         viewPager.setAdapter(new HomeBannerSliderAdapter(this));
-
 
     }
 
@@ -118,15 +128,24 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()){
             case R.id.imgShare:
-                Intent intent=new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                String title=getResources().getString(R.string.chooser_title);
-                Intent chooser= Intent.createChooser(intent,title);
-                if (intent.resolveActivity(getPackageManager()) != null) {
+                 intent=new Intent(Intent.ACTION_SEND);
+                 intent.setType("text/plain");
+                 String title=getResources().getString(R.string.chooser_title);
+                 Intent chooser= Intent.createChooser(intent,title);
+                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(chooser);
-                }
+                 }
+                 break;
+            case R.id.btnBuynow:
+                EnterQuantityFragment enterQuantityFragment=new EnterQuantityFragment();
+                enterQuantityFragment.show(getSupportFragmentManager(),"Quantity Dialog");
+                 break;
+            case R.id.btnRate:
+                RatingPopupFragment ratingPopupFragment=new RatingPopupFragment();
+                ratingPopupFragment.show(getSupportFragmentManager(),"Rating Dialog");
                 break;
 
         }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -14,6 +15,7 @@ import neosoft.training.neostore.common.base.BaseActivity;
 public class AddAddressActivity extends BaseActivity {
    Toolbar toolbarAdd;
    TextView toolbarTitle;
+   ImageView imgCut;
 
     @Override
     public int getContentView() {

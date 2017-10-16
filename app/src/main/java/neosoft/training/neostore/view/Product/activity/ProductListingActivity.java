@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
-import neosoft.training.neostore.view.Product.ProductListingAdapter;
+import neosoft.training.neostore.view.Product.adapter.ProductListingAdapter;
 
 public class ProductListingActivity extends BaseActivity {
   private Toolbar toolbarPL;
@@ -30,7 +30,6 @@ public class ProductListingActivity extends BaseActivity {
         list.add("Stylish 4 Seater Dining Tables");
         list.add("Stylish Table");
         list.add("Harkness Table For Office");
-
 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -55,7 +54,9 @@ public class ProductListingActivity extends BaseActivity {
     @Override
     public void initView() {
         mRecyclerView=findViewById(R.id.recyclerViewProduct);
-        init();
+        toolbarPL=findViewById(R.id.toolbar);
+        productToolbarTitle=toolbarPL.findViewById(R.id.toolbartxtViewTitle);
+
     }
 
     @Override
@@ -72,12 +73,6 @@ public class ProductListingActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.reg_arrow);
         String str=getIntent().getStringExtra("Title");
         productToolbarTitle.setText(str);  //productToolbarTitle.setText(R.string.toolar_product_header);
-
-    }
-
-    private void init() {
-        toolbarPL=findViewById(R.id.toolbar);
-        productToolbarTitle=toolbarPL.findViewById(R.id.toolbartxtViewTitle);
 
     }
 

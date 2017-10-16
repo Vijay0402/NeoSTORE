@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+
+    tools:context="neosoft.training.neostore.view.order.activity.MyOrderActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/twenty"
+
+    >
+    <TextView
+
+        android:id="@+id/orderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/thirteen"
+        android:layout_marginTop="@dimen/twenty"
+        android:layout_marginBottom="@dimen/twenty"
+        android:text="Order ID"
+        android:layout_below="@+id/toolbarId"
+        android:layout_alignParentStart="true"
+        style="@style/OrderID"
+
+        />
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@+id/orderIDValue"
+        android:layout_marginTop="9dp"
+        android:layout_alignStart="@+id/orderId"
+        android:layout_alignEnd="@id/orderDateValue" />
+
+    <TextView
+        android:id="@+id/orderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/orderId"
+        android:layout_below="@+id/orderId"
+        android:text="Order Date"
+        style="@style/OrderDate"
+
+        />
+
+    <TextView
+        android:id="@+id/orderIDValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/five"
+        android:text="Order ID"
+        android:layout_toEndOf="@+id/orderId"
+        android:layout_alignBottom="@+id/orderId"
+        style="@style/OrderID"
+
+        />
+
+    <TextView
+        android:id="@+id/orderDateValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date Value"
+        style="@style/OrderDate"
+        android:layout_below="@+id/orderId"
+        android:layout_toEndOf="@+id/orderDate"
+        android:layout_marginLeft="@dimen/five"
+
+        />
+
+    <TextView
+        android:id="@+id/orderPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="Price"
+        android:textSize="@dimen/twenty"
+        android:textColor="@color/colorOrderPrice"
+        android:layout_above="@+id/orderDateValue"
+        android:layout_alignParentEnd="true"
+
+        />
+</RelativeLayout>
+
+</RelativeLayout>
+
+
+
+
+
+
+

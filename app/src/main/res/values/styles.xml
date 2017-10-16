@@ -13,21 +13,20 @@
         <item name="android:background">@drawable/drawable_username</item>
         <item name="android:hint">@string/login_username</item>
         <item name="android:textSize">@dimen/main_forget_password</item>
-
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:drawablePadding">10dp</item>
 
-                
     </style>
+
     <style name="edtLogPassword">
-        <item name="android:hint">@string/login_password</item>
+
         <item name="android:textSize">@dimen/main_login_password</item>
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:background">@drawable/drawable_username</item>
-        <item name="android:drawablePadding">5dp</item>
+        <item name="android:drawablePadding">10dp</item>
         <item name="android:textColor">@color/colorWhite</item>
-        
+
     </style>
     <style name="btnLogin">
         <item name="android:textSize">@dimen/main_login_button</item>
@@ -132,18 +131,56 @@
     <style name="txtAddressListShipping">
         <item name="android:textColor">#333333</item>
         <item name="android:textSize">@dimen/twentyTwo</item>
-        <item name="android:layout_marginTop">@dimen/twelve</item>
-        <item name="android:layout_marginBottom">@dimen/twelve</item>
 
     </style>
     <style name="txtAddressListDescription">
         <item name="android:textColor">#333333</item>
         <item name="android:textSize">@dimen/fifteen</item>
-        <item name="android:layout_marginTop">@dimen/twelve</item>
-        <item name="android:layout_marginBottom">@dimen/twelve</item>
+
+    </style>
+    <style name="OrderID">
+        <item name="android:textColor">@color/colorOrderId</item>
+        <item name="android:textSize">@dimen/seventeen</item>
 
     </style>
 
+    <style name="OrderDate">
+        <item name="android:textColor">@color/colorOrderDate</item>
+        <item name="android:textSize">@dimen/twelve</item>
+
+    </style>
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="OrderIDName">
+        <item name="android:textColor">@color/colorOrderId</item>
+        <item name="android:textSize">@dimen/twenty</item>
+
+    </style>
+    <style name="OrderQuantity">
+        <item name="android:textColor">@color/colorOrderPrice</item>
+        <item name="android:textSize">@dimen/thirteen</item>
+
+    </style>
+    <style name="OrderDescription">
+        <item name="android:textColor">@color/colorOrderDescription</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+
+    </style>
+
+    <style name="Price">
+        <item name="android:textColor">@color/colorOrderDescription</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+    </style>
+    <style name="CartItemName">
+        <item name="android:textColor">@color/colorOrderId</item>
+        <item name="android:textSize">@dimen/twentyFour</item>
+
+
+    </style>
 
 
 </resources>

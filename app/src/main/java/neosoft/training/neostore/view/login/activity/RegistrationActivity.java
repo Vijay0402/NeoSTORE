@@ -1,4 +1,4 @@
-package neosoft.training.neostore.view.login;
+package neosoft.training.neostore.view.login.activity;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;

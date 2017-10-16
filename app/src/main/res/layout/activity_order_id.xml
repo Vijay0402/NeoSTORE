@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    tools:context="neosoft.training.neostore.view.order.activity.OrderIdActivity">
+
+   <include layout="@layout/toolbar"
+        />
+
+   <include layout="@layout/recycler_view"
+       android:id="@+id/include4" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/twenty"
+    android:layout_marginLeft="@dimen/fifteen"
+    android:layout_marginRight="@dimen/fifteen"
+    android:layout_marginBottom="@dimen/twenty"
+    android:weightSum="3"
+    >
+      <TextView
+       android:id="@+id/totalID"
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:text="Total"
+       android:textSize="20sp"
+       android:gravity="start"
+       android:layout_weight="2"
+       />
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rs. Price"
+        android:textSize="@dimen/twenty"
+        android:gravity="end"
+        android:layout_weight="1"
+        android:layout_marginEnd="@dimen/twelve"
+        />
+
+
+
+</LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+
+
+        />
+
+</LinearLayout>

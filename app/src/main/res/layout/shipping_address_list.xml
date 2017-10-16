@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/thirteen"
+    android:layout_marginRight="@dimen/thirteen"
+
+    >
+
+    <RadioButton
+        android:id="@+id/rdBtnAddressList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fifteen"
+        android:button="@drawable/draw_radio_shipping_check"
+
+        />
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/twelve"
+        android:background="@drawable/draw_shipping_address"
+
+        android:layout_marginBottom="@dimen/twelve"
+        >
+
+        <TextView
+           android:layout_marginLeft="@dimen/twelve"
+            android:id="@+id/txtAddressListShipping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_name"
+            android:layout_marginTop="@dimen/five"
+            style="@style/txtAddressListShipping"
+
+             />
+        <TextView
+            android:id="@+id/txtAddressListDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/five"
+            android:text="@string/place_order"
+            style="@style/txtAddressListDescription"
+            android:layout_marginTop="@dimen/five"
+            android:layout_below="@+id/txtAddressListShipping"
+            android:layout_alignStart="@+id/txtAddressListShipping"
+
+            />
+
+        <ImageView
+            android:id="@+id/imgClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/clear"
+
+            android:layout_alignTop="@+id/txtAddressListShipping"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit"
+            android:layout_below="@id/imgClear"
+            android:layout_alignEnd="@+id/imgClear"
+
+            android:layout_marginTop="@dimen/five"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

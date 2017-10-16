@@ -1,4 +1,4 @@
-package neosoft.training.neostore.view.Product;
+package neosoft.training.neostore.view.Product.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,13 +22,14 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
    private Context context;
 
     public ProductListingAdapter(Context context) {
-this.context=context;
+        this.context=context;
+
     }
 
 
     @Override
     public ProductListingAdapter.NumberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context=parent.getContext();
+        context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
         View view=inflater.inflate(R.layout.product_list,parent,false);
         NumberViewHolder numberViewHolder=new NumberViewHolder(view);
@@ -42,11 +43,10 @@ this.context=context;
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return 10;
     }
-
-
 
     public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
          TextView productName;
@@ -58,8 +58,6 @@ this.context=context;
             // to make toast in recycler view when click on row
             itemView.setOnClickListener(this);
             //new activity when click on particular item
-
-
 
         }
         void bind(int position){

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/thirtyThree"
+        android:text="@string/address_name"
+        android:textSize="25sp"
+        android:layout_marginBottom="@dimen/thirtyThree"/>
+
+    <ImageView
+        android:id="@+id/imgItem"
+        android:layout_width="@dimen/twoSixty"
+        android:layout_height="@dimen/oneEighty"
+        app:srcCompat="@drawable/slider_img3"
+        android:layout_below="@+id/txtItemName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/thirtyThree"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/txtQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_quantity"
+        android:textSize="@dimen/twenty"
+        android:layout_below="@+id/imgItem"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/twentyTwo"
+        />
+
+    <EditText
+        android:id="@+id/edtQuantity"
+        android:layout_width="@dimen/hundredTwelve"
+        android:layout_height="@dimen/fourtyEight"
+        android:layout_marginBottom="@dimen/twentyTwo"
+        android:ems="10"
+        android:maxLength="2"
+        android:gravity="center"
+        android:inputType="number"
+        android:background="@drawable/draw_quantity_select"
+        android:layout_below="@+id/txtQuantity"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="@dimen/oneNinetyEight"
+        android:layout_height="@dimen/fourtyEight"
+        android:text="@string/submit"
+        android:layout_below="@+id/edtQuantity"
+        android:layout_centerHorizontal="true"
+        style="@style/btnSaveAddress"
+        android:layout_marginBottom="@dimen/thirtyThree"
+
+        />
+</RelativeLayout>

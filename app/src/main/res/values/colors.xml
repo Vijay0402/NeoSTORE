@@ -21,4 +21,19 @@
     <color name="colorDescriptionText">#333333</color>
 
     <color name="colorRateButton">#bfbfbf</color>
+
+
+    <color name="colorRadioButton">#8e8e8e</color>
+    <color name="colorGreen">#00ff00</color>
+    <color name="colorButton">#bb0100</color>
+
+    <color name="colorOrderId">#1c1c1c</color>
+    <color name="colorOrderDate">#4F4F4f</color>
+    <color name="colorOrderPrice">#333333</color>
+    <color name="colorOrderDescription">#6b6b6b</color>
+    <color name="colorOrderNowButton">#db1514</color>
+
+
+
+
 </resources>

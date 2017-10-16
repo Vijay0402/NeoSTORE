@@ -5,54 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="@dimen/thirteen"
 
+    android:fitsSystemWindows="true"
     tools:context="neosoft.training.neostore.view.address.activity.AddressListActivity">
 
     <include layout="@layout/toolbar"/>
 
-    <TextView
-        android:id="@+id/txtShipping"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/shipping_address"
-        style="@style/txtAddressListShipping"
-
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/thirteen"
+        android:layout_marginRight="@dimen/thirteen"
 
         >
-
-        <include layout="@layout/recycler_view"/>
-        <RadioButton
-            android:id="@+id/rdBtnAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/draw_radio_state"
-         />
-
-         <TextView
-            android:id="@+id/txtAddress1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/address_first"
-
-            style="@style/txtAddressListShipping"
-
-             />
-
         <TextView
-            android:id="@+id/txtCompleteAddress"
+            android:id="@+id/txtShipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fdhhhghkjfhgkhdfkghdfjk"
+            android:text="@string/shipping_address"
             style="@style/txtAddressListShipping"
+            android:layout_marginTop="@dimen/twelve"
+            android:layout_marginBottom="@dimen/twelve"
+            />
+        <include layout="@layout/recycler_view"/>
+
+        <Button
+            android:id="@+id/btnPlaceOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/place_order"
+            style="@style/btnSaveAddress"
+            android:layout_marginTop="@dimen/thirtyThree"
+            android:layout_gravity="center_horizontal"
 
             />
+
     </LinearLayout>
 
 </LinearLayout>

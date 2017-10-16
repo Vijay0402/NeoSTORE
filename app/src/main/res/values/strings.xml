@@ -59,8 +59,31 @@
     <string name="chooser_title">Share With</string>
 
     <string name="shipping_address">Shipping Address</string>
-    <string name="address_first">Address First</string>
+    <string name="address_name">Address Name</string>
 
+    <string name="place_order">PLACE ORDER</string>
 
+    <string name="address_list">Address List</string>
+    <string name="item_name">Item Name</string>
+
+    <string name="submit">SUBMIT</string>
+    <string name="enter_quantity">Enter Qty</string>
+
+    <string name="rate_now">Rate Now</string>
+    <string name="order_now">Order Now</string>
+
+    <string name="mycart">My Cart</string>
+
+    <string-array name="quantity_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <string name="reset_password">Reset Password</string>
 
 </resources>
