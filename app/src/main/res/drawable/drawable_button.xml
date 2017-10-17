@@ -7,8 +7,8 @@
     android:color="@color/colorWhite"
     />
     <size
-        android:width="350dp"
-        android:height="50dp"
+        android:width="320dp"
+        android:height="60dp"
         />
     <gradient
         android:startColor="@color/colorWhite"

@@ -21,7 +21,7 @@
 
     >
    <TextView
-          android:id="@+id/txtNeoStore"
+          android:id="@+id/circleImage"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="20dp"
@@ -40,7 +40,7 @@
        android:drawableLeft="@drawable/person"
        android:inputType="textPersonName"
        android:hint="@string/register_firstname"
-       android:layout_below="@+id/txtNeoStore"
+       android:layout_below="@+id/circleImage"
        android:layout_centerHorizontal="true" />
 
    <EditText
@@ -70,7 +70,7 @@
         android:drawableLeft="@drawable/reg_email"/>
 
     <EditText
-        android:id="@+id/edtRegPassword"
+        android:id="@+id/edtPhoneno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -84,7 +84,7 @@
         />
 
     <EditText
-        android:id="@+id/edtRegConfirmPassword"
+        android:id="@+id/edtDOB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
@@ -92,7 +92,7 @@
         style="@style/edtLogUsername"
         android:inputType="textPassword"
         android:hint="@string/register_confirmPassword"
-        android:layout_below="@+id/edtRegPassword"
+        android:layout_below="@+id/edtPhoneno"
         android:layout_alignStart="@+id/edtRegFirstName"
         android:drawableLeft="@drawable/reg_confirmpassword"
         />
@@ -102,7 +102,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      android:layout_below="@+id/edtRegConfirmPassword"
+      android:layout_below="@+id/edtDOB"
       android:layout_marginTop="23dp"
       android:layout_marginLeft="29dp"
       >
@@ -155,7 +155,7 @@
         android:drawableLeft="@drawable/reg_phone"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/rdGender"
-        android:layout_alignStart="@+id/edtRegConfirmPassword"
+        android:layout_alignStart="@+id/edtDOB"
 
         />
 <LinearLayout

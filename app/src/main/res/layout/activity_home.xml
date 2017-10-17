@@ -46,7 +46,7 @@
 
     </RelativeLayout>
         <LinearLayout
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:weightSum="2"
@@ -58,7 +58,6 @@
 
             <LinearLayout
                 android:id="@+id/tablesofa"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -69,8 +68,8 @@
                 <ImageView
                     android:layout_weight="1"
                     android:id="@+id/imgTable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:src="@drawable/tableicon"
                     android:scaleType="centerCrop"
 
@@ -79,8 +78,8 @@
 
                     android:layout_weight="1"
                     android:id="@+id/imgSofa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:src="@drawable/sofaicon"
                     android:scaleType="centerCrop"
                     android:layout_marginLeft="12dp"
@@ -93,7 +92,6 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_weight="1"
                 android:layout_marginTop="13dp"
 
 
@@ -101,19 +99,16 @@
                 <ImageView
                     android:id="@+id/imgChair"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:src="@drawable/chairsicon"
-                    android:scaleType="centerCrop"
+                    android:scaleType="centerCrop"/>
 
-
-
-                    />
                 <ImageView
                     android:layout_weight="1"
                     android:id="@+id/imgCupboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:src="@drawable/cupboardicon"
                     android:scaleType="centerCrop"
                     android:layout_marginLeft="12dp"

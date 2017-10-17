@@ -12,7 +12,7 @@
     >
 
     <TextView
-        android:id="@+id/txtNeoStore"
+        android:id="@+id/circleImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -31,9 +31,9 @@
         android:layout_marginTop="48dp"
         android:drawableLeft="@drawable/person"
         android:ems="10"
-        android:layout_below="@+id/txtNeoStore"
-        android:layout_alignRight="@+id/edtNewPassword"
+        android:layout_below="@+id/circleImage"
         android:layout_alignEnd="@+id/edtNewPassword"
+        android:layout_alignStart="@+id/edtNewPassword"
         android:maxLines="1"
         android:hint="@string/login_username"
         android:inputType="textEmailAddress"
@@ -45,9 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtLogUsername"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         style="@style/edtLogPassword"
         android:hint="@string/login_password"
+        android:ems="10"
         android:drawableLeft="@drawable/password_lock"
         android:maxLines="1"
         android:inputType="textPassword"

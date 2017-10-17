@@ -21,6 +21,7 @@ import me.relex.circleindicator.CircleIndicator;
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.view.Product.activity.ProductListingActivity;
+import neosoft.training.neostore.view.account.MyAccountActivity;
 import neosoft.training.neostore.view.home.adapter.HomeBannerSliderAdapter;
 import neosoft.training.neostore.view.mycart.activity.MyCartActivity;
 import neosoft.training.neostore.view.order.activity.MyOrderActivity;
@@ -184,6 +185,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 intent=new Intent(HomeActivity.this, MyOrderActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.navigation_item_address:
+                intent=new Intent(HomeActivity.this, MyAccountActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.navigation_item_logout:
                 return true;
 

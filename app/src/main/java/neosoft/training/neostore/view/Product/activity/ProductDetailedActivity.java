@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.view.Product.adapter.ProductDetailedAdapter;
@@ -32,10 +31,8 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
    ImageView imgShare;
    private Button btnBuynow,btnRatenow;
 
-
-
-  // Integer[] imgArray={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
- //  List<String> imgList=new ArrayList<>();
+   // Integer[] imgArray={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
+   //  List<String> imgList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +59,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         mRecyclerView=findViewById(R.id.recyclerView);
         imgShare=findViewById(R.id.imgShare);
         btnBuynow=findViewById(R.id.btnBuynow);
-        btnRatenow=findViewById(R.id.btnRate);
+        btnRatenow=findViewById(R.id.ratenow);
 
     }
 
@@ -143,7 +140,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                 EnterQuantityFragment enterQuantityFragment=new EnterQuantityFragment();
                 enterQuantityFragment.show(getSupportFragmentManager(),"Quantity Dialog");
                  break;
-            case R.id.btnRate:
+            case R.id.ratenow:
                 RatingPopupFragment ratingPopupFragment=new RatingPopupFragment();
                 ratingPopupFragment.show(getSupportFragmentManager(),"Rating Dialog");
                 break;

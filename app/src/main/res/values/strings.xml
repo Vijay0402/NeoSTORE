@@ -85,5 +85,9 @@
     <string name="confirm_password">Confirm Password</string>
 
     <string name="reset_password">Reset Password</string>
+    <string name="btn_reset_password">RESET PASSWORD</string>
+    <string name="dob">DOB</string>
+
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

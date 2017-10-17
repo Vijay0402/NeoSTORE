@@ -1,8 +1,5 @@
 package neosoft.training.neostore.view.login.activity;
 
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -22,13 +19,13 @@ public class RegistrationActivity extends BaseActivity {
 
     public void initView() {
         txtCondition=findViewById(R.id.txtRegCondition);
-        txtNeostore=findViewById(R.id.txtNeoStore);
+        txtNeostore=findViewById(R.id.circleImage);
         txtTerms=findViewById(R.id.txtRegTerms);
         edtFirstname=findViewById(R.id.edtRegFirstName);
         edtLastname=findViewById(R.id.edtRegLastName);
         edtEmail=findViewById(R.id.edtRegEmail);
-        edtPassword=findViewById(R.id.edtRegPassword);
-        edtConfirmPassword=findViewById(R.id.edtRegConfirmPassword);
+        edtPassword=findViewById(R.id.edtPhoneno);
+        edtConfirmPassword=findViewById(R.id.edtDOB);
         edtPhoneno=findViewById(R.id.edtRegPhone);
 
         toolbarR =(Toolbar)findViewById(R.id.toolbar);

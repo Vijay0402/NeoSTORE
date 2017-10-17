@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
+import neosoft.training.neostore.view.account.EditProfileActivity;
+import neosoft.training.neostore.view.account.MyAccountActivity;
 import neosoft.training.neostore.view.home.activity.HomeActivity;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
@@ -25,7 +27,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     public void initView() {
-        txtNeoStore=findViewById(R.id.txtNeoStore);
+        txtNeoStore=findViewById(R.id.circleImage);
         txtForgot=findViewById(R.id.txtForget);
         txtAccount=findViewById(R.id.txtAccount);
         edtUserHint=findViewById(R.id.edtLogUsername);
@@ -53,11 +55,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         Intent intent;
         switch(view.getId()){
             case R.id.btnLogin:
-                intent=new Intent(LoginActivity.this,ResetPasswordActivity.class);
+                intent=new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
                 break;
             case R.id.txtPlus:
-                intent=new Intent(LoginActivity.this,RegistrationActivity.class);
+                intent=new Intent(LoginActivity.this,EditProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.txtForget:

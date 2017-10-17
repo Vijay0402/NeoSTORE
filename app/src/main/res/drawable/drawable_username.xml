@@ -7,8 +7,8 @@
     android:color="@color/colorWhite"
     />
     <size
-        android:width="370dp"
-        android:height="40dp"
+        android:width="320dp"
+        android:height="50dp"
         />
     <padding
         android:left="10dp"/>

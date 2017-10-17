@@ -26,8 +26,6 @@ import neosoft.training.neostore.view.home.activity.HomeActivity;
 public class EnterQuantityFragment extends DialogFragment implements View.OnClickListener {
     Button btnSubmit;
 
-
-
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -38,7 +36,6 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
         return builder.create();
 
     }
-
 
     @Override
     public void onClick(View view) {

@@ -55,6 +55,12 @@
     <dimen name="three">3dp</dimen>
     <dimen name="threeThirty">330dp</dimen>
 
+    <dimen name="eightyFour">84dp</dimen>
+    <dimen name="thirtyNine">39dp</dimen>
+
+    <dimen name="oneFourtyFour">144dp</dimen>
+    <dimen name="fiftyTwo">52dp</dimen>
+    <dimen name="twentyFive">25dp</dimen>
 
 
 </resources>

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:text="@string/register_header"
             android:gravity="center"
-            android:layout_marginRight="?attr/actionBarSize"
+            android:layout_marginEnd="?attr/actionBarSize"
             android:textAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
             />
     </android.support.v7.widget.Toolbar>

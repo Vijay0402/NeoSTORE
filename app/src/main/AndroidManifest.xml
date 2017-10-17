@@ -27,7 +27,9 @@
         <activity android:name=".view.login.activity.ForgotPasswordActivity" />
         <activity android:name=".view.mycart.activity.MyCartActivity" />
         <activity android:name=".view.login.activity.ResetPasswordActivity" />
-        <activity android:name=".view.account.MyAccountActivity"></activity>
+        <activity android:name=".view.account.MyAccountActivity" />
+        <activity android:name=".view.account.EditProfileActivity" />
+
     </application>
 
 </manifest>
