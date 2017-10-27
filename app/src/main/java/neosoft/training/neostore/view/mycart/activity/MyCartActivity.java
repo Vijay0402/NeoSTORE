@@ -4,6 +4,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -28,6 +29,12 @@ public class MyCartActivity extends BaseActivity {
         toolbar=findViewById(R.id.toolbar);
         txtTitleToolbar=toolbar.findViewById(R.id.toolbartxtViewTitle);
         init();
+        initSwipe();
+    }
+
+    private void initSwipe() {
+
+
     }
 
     private void init() {

@@ -1,25 +1,30 @@
 package neosoft.training.neostore.view.login.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.common.base.LoginAsyncTask;
 import neosoft.training.neostore.common.base.BaseActivity;
-import neosoft.training.neostore.view.account.EditProfileActivity;
-import neosoft.training.neostore.view.account.MyAccountActivity;
 import neosoft.training.neostore.view.home.activity.HomeActivity;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
-   TextView txtNeoStore,txtAccount;
-   EditText edtUserHint,edtPassHint;
-   Button btnLogin;
-   ImageView txtPlus;
-   TextView txtForgot;
-
+   private TextView txtNeoStore,txtAccount;
+   private EditText edtUserHint,edtPassHint;
+   private Button btnLogin;
+   private ImageView txtPlus;
+   private TextView txtForgot;
+   private Context context=this;
+   private String url="http://staging.php-dev.in:8844/trainingapp/api/users/login";
 
     @Override
     public int getContentView() {
@@ -35,6 +40,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         txtPlus=findViewById(R.id.txtPlus);
         btnLogin=findViewById(R.id.btnLogin);
 
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("Login",0);
+        if(sharedPreferences.contains("Email")){
+            Intent intent=new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -53,20 +64,38 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Intent intent;
-        switch(view.getId()){
+        switch(view.getId()) {
             case R.id.btnLogin:
-                intent=new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(intent);
+                validate();
                 break;
             case R.id.txtPlus:
-                intent=new Intent(LoginActivity.this,EditProfileActivity.class);
+                intent=new Intent(LoginActivity.this,RegistrationActivity.class);
                 startActivity(intent);
                 break;
             case R.id.txtForget:
                 intent=new Intent(LoginActivity.this,ForgotPasswordActivity.class);
                 startActivity(intent);
                 break;
+        }
 
+}
+
+    private void validate() {
+
+        if (edtUserHint.getText().toString().equals("")){
+            edtUserHint.setError("Please Enter Username");
+        }
+        else if(edtPassHint.getText().toString().equals("")){
+            edtPassHint.setError("Please Enter Password");
+        }
+        else{
+
+            //for Http post
+            Map<String ,Object> loginData= new HashMap<>();
+            loginData.put("email",edtUserHint.getText().toString());
+            loginData.put("password",edtPassHint.getText().toString());
+            LoginAsyncTask loginHttpPost=new LoginAsyncTask(loginData,context);
+            loginHttpPost.execute(url);
 
         }
     }

@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.model.ProductListModel;
 import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 
 /**
@@ -19,11 +22,12 @@ import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.NumberViewHolder> {
 
-   private Context context;
+    private List<ProductListModel> data;
+    private Context context;
 
-    public ProductListingAdapter(Context context) {
+    public ProductListingAdapter(Context context, List<ProductListModel> data) {
         this.context=context;
-
+        this.data=data;
     }
 
 
@@ -45,7 +49,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     @Override
     public int getItemCount()
     {
-        return 10;
+        return data.size();
     }
 
     public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -61,6 +65,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
         }
         void bind(int position){
+
             productName.setText(String.valueOf("Product : "+position));
 
         }

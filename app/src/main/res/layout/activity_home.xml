@@ -44,7 +44,7 @@
             app:ci_drawable_unselected="@drawable/viewpager_circle_indicator_unselected"
             />
 
-    </RelativeLayout>
+   </RelativeLayout>
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -132,7 +132,6 @@
      android:background="@color/color_black"
      android:layout_gravity="start"
      >
-
 
     </android.support.design.widget.NavigationView>
 

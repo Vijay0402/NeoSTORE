@@ -1,5 +1,7 @@
 package neosoft.training.neostore.view.Product.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +11,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.view.Product.adapter.ProductListingAdapter;
@@ -19,32 +24,9 @@ public class ProductListingActivity extends BaseActivity {
   private TextView productToolbarTitle;
   private RecyclerView mRecyclerView;
   private ProductListingAdapter mCustomRecyclerAdapter;
-  private List<String > list=new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        list.add("Stylish Modern dining Tables");
-        list.add("4 Seater Dining Table");
-        list.add("6 Seater Dining Table");
-        list.add("Stylish 4 Seater Dining Tables");
-        list.add("Stylish Table");
-        list.add("Harkness Table For Office");
-
-        mRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-
-        //add divider in recycler view
-        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
-                mLayoutManager.getOrientation());
-        mRecyclerView.addItemDecoration(mDividerItemDecoration);
-
-        mCustomRecyclerAdapter=new ProductListingAdapter(this);
-        mRecyclerView.setAdapter(mCustomRecyclerAdapter);
-
-    }
+  private Context context=this;
+  private String url="http://staging.php-dev.in:8844/trainingapp/api/products/getList";
 
     @Override
     public int getContentView() {
@@ -57,7 +39,14 @@ public class ProductListingActivity extends BaseActivity {
         toolbarPL=findViewById(R.id.toolbar);
         productToolbarTitle=toolbarPL.findViewById(R.id.toolbartxtViewTitle);
 
-    }
+        Map<String, Object > data=new HashMap<>();
+        Intent intent=getIntent();
+        String str=intent.getStringExtra("product_category_id");
+        data.put("product_category_id",str);
+        ProductListAsyncTask productListAsyncTask=new ProductListAsyncTask(data,context);
+        productListAsyncTask.execute(url);
+
+     }
 
     @Override
     public void setListeners() {
@@ -91,7 +80,8 @@ public class ProductListingActivity extends BaseActivity {
         switch (id) {
             case R.id.action_search:
                 return true;
-            case android.R.id.home:onBackPressed();
+            case android.R.id.home:
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);

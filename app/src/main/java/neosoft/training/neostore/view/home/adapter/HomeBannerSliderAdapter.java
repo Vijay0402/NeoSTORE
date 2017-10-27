@@ -52,4 +52,5 @@ public class HomeBannerSliderAdapter extends PagerAdapter {
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
     }
+
 }
