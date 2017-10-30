@@ -154,25 +154,25 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         switch (id) {
             case R.id.imgTable:
                 intent = new Intent(this, ProductListingActivity.class);
-                intent.putExtra("Title", "Table");
+                intent.putExtra("Title", "Tables");
                 intent.putExtra("product_category_id","1");
                 startActivity(intent);
                 break;
             case R.id.imgSofa:
                 intent = new Intent(this, ProductListingActivity.class);
-                intent.putExtra("Title", "Sofa");
-                intent.putExtra("product_category_id","2");
+                intent.putExtra("Title", "Sofas");
+                intent.putExtra("product_category_id","3");
                 startActivity(intent);
                 break;
             case R.id.imgChair:
                 intent = new Intent(this, ProductListingActivity.class);
-                intent.putExtra("Title", "Chair");
-                intent.putExtra("product_category_id","3");
+                intent.putExtra("Title", "Chairs");
+                intent.putExtra("product_category_id","2");
                 startActivity(intent);
                 break;
             case R.id.imgCupboard:
                 intent = new Intent(this, ProductListingActivity.class);
-                intent.putExtra("Title", "Cupboard");
+                intent.putExtra("Title", "Cupboards");
                 intent.putExtra("product_category_id","4");
                 startActivity(intent);
                 break;
@@ -191,12 +191,24 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent);
                 return true;
             case R.id.navigation_item_tables:
+                intent = new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("product_category_id","1");
+                startActivity(intent);
                 return true;
             case R.id.navigation_item_sofas:
+                intent = new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("product_category_id","3");
+                startActivity(intent);
                 return true;
             case R.id.navigation_item_chairs:
+                intent = new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("product_category_id","2");
+                startActivity(intent);
                 return true;
             case R.id.navigation_item_cupboards:
+                intent = new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("product_category_id","4");
+                startActivity(intent);
                 return true;
             case R.id.navigation_item_myaccount:
                 return true;

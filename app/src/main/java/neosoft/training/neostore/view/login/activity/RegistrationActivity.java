@@ -1,7 +1,9 @@
 package neosoft.training.neostore.view.login.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,23 +14,28 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
+import neosoft.training.neostore.common.base.BaseAsyncTask;
 import neosoft.training.neostore.common.base.RegistrationAsyncTask;
+import neosoft.training.neostore.model.RegistrationModel;
 
-public class RegistrationActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class RegistrationActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener, BaseAsyncTask.onAsyncRequestComplete{
     private TextView txtCondition, txtNeostore, txtTerms;
-    EditText edtFirstname, edtLastname, edtEmail, edtPassword, edtConfirmPassword, edtPhoneno;
-    Toolbar toolbarR;
+    private EditText edtFirstname, edtLastname, edtEmail, edtPassword, edtConfirmPassword, edtPhoneno;
+    private Toolbar toolbarR;
     private RadioGroup rgGender;
     private String strGender;
     private CheckBox cbTC;
     private Button btnRegister;
-    Boolean bTerms = false;
-    Context context=this;
+    private Boolean bTerms = false;
+
     private String url="http://staging.php-dev.in:8844/trainingapp/api/users/register";
 
     @Override
@@ -92,7 +99,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 userData.put("confirm_password", edtConfirmPassword.getText().toString());
                 userData.put("gender", strGender);
                 userData.put("phone_no",edtPhoneno.getText().toString());
-                RegistrationAsyncTask httpPostAsyncTask=new RegistrationAsyncTask(userData,context);
+                BaseAsyncTask httpPostAsyncTask=new BaseAsyncTask(this,"POST",userData);
                 httpPostAsyncTask.execute(url);
 
             }
@@ -140,4 +147,41 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     }
 
+    @Override
+    public void asyncResponse(Object response) {
+
+        try {
+            JSONObject jsonObject = new JSONObject(String.valueOf(response));
+            int statusid = jsonObject.optInt("status");
+            JSONObject dataObject = jsonObject.optJSONObject("data");
+            RegistrationModel sampleModel = new RegistrationModel();
+
+            sampleModel.setId(dataObject.optInt("id"));
+            sampleModel.setRole_id(dataObject.optInt("role_id"));
+            sampleModel.setFirst_name(dataObject.optString("first_name"));
+            sampleModel.setLast_name(dataObject.optString("last_name"));
+            sampleModel.setEmail(dataObject.optString("email"));
+            sampleModel.setUsername(dataObject.optString("username"));
+            sampleModel.setProfile_pic(dataObject.optString("profile_pic"));
+            sampleModel.setCountry_id(dataObject.optString("country_id"));
+            sampleModel.setGender(dataObject.optString("gender"));
+            sampleModel.setPhone_no(dataObject.optInt("phone_no"));
+            sampleModel.setDob(dataObject.optString("dob"));
+            sampleModel.setIs_active(dataObject.optBoolean("is_active"));
+            sampleModel.setCreated(dataObject.optString("created"));
+            sampleModel.setModified(dataObject.optString("modified"));
+            sampleModel.setAccess_token(dataObject.optString("access_token"));
+
+            Log.e("json",""+statusid);
+            Intent intent=new Intent(this,LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        catch (JSONException e){
+
+            e.printStackTrace();
+        }
+
+
+    }
 }

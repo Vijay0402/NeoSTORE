@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,9 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import neosoft.training.neostore.common.base.LoginAsyncTask;
 import neosoft.training.neostore.model.ProductListModel;
-import neosoft.training.neostore.model.RegistrationModel;
 import neosoft.training.neostore.view.Product.adapter.ProductListingAdapter;
 import neosoft.training.neostore.view.login.activity.LoginActivity;
 
@@ -44,13 +43,13 @@ public class ProductListAsyncTask extends AsyncTask<String, String, String> {
     private String msgResponse;
     private int statusCode;
     private StringBuilder result = new StringBuilder("");
-    private Map<String, Object> productData;
+    private Map<String, Object> mapData;
     private static final String TAG = ProductListAsyncTask.class.getSimpleName();
 
-    public ProductListAsyncTask(Map<String, Object> productData, Context context) {
-        this.productData = productData;
+    public ProductListAsyncTask(Map<String, Object> productData, Context context, RecyclerView mRecyclerView) {
+        this.mapData = productData;
         this.context = context;
-
+        this.mRecyclerView=mRecyclerView;
     }
 
     @Override
@@ -58,19 +57,11 @@ public class ProductListAsyncTask extends AsyncTask<String, String, String> {
 
         URL url = null;
         try {
-            url = new URL(strings[0]);
+            StringBuilder stringBuilder=new StringBuilder(strings[0]);
+            stringBuilder.append("?"+getQuery(mapData));
+            url = new URL(stringBuilder.toString());
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod("GET");
-
-            if (this.productData != null) {
-                OutputStream outputStream = urlConnection.getOutputStream();
-                OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-                writer.write(getQuery(productData));
-                writer.flush();
-                writer.close();
-                outputStream.close();
-            }
             urlConnection.connect();
 
             statusCode = urlConnection.getResponseCode();
@@ -78,8 +69,7 @@ public class ProductListAsyncTask extends AsyncTask<String, String, String> {
             if (statusCode == 200) {
                 InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
                 //response = inputStream.toString();
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String line = "";
                 while ((line = reader.readLine()) != null) {
                     result.append(line);
@@ -125,27 +115,26 @@ public class ProductListAsyncTask extends AsyncTask<String, String, String> {
 
                     Log.e("json", "" + statusid);
 
-                    mRecyclerView.setHasFixedSize(true);
-                    mLayoutManager = new LinearLayoutManager(context);
-                    mRecyclerView.setLayoutManager(mLayoutManager);
 
-                    //add divider in recycler view
-                    DividerItemDecoration mDividerItemDecoration =
-                            new DividerItemDecoration(mRecyclerView.getContext(),mLayoutManager.getOrientation());
-                    mRecyclerView.addItemDecoration(mDividerItemDecoration);
-
-                    mCustomRecyclerAdapter = new ProductListingAdapter(context,data);
-                    mRecyclerView.setAdapter(mCustomRecyclerAdapter);
 
                 }
+                mRecyclerView.setHasFixedSize(true);
+                mLayoutManager = new LinearLayoutManager(context);
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                DividerItemDecoration mDividerItemDecoration =
+                        new DividerItemDecoration(mRecyclerView.getContext(),mLayoutManager.getOrientation());
+                mRecyclerView.addItemDecoration(mDividerItemDecoration);
 
+                mCustomRecyclerAdapter = new ProductListingAdapter(context,data);
+                mRecyclerView.setAdapter(mCustomRecyclerAdapter);
             } catch (JSONException e) {
 
                 e.printStackTrace();
             }
-            Intent intent = new Intent(context, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            context.startActivity(intent);
+
+        }
+        else {
+            Toast.makeText(context, "Data fetching error ", Toast.LENGTH_SHORT).show();
         }
     }
 

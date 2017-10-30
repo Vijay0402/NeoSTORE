@@ -7,9 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import neosoft.training.neostore.R;
@@ -22,21 +26,22 @@ import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.NumberViewHolder> {
 
-    private List<ProductListModel> data;
+    ProductListModel productListModel;
+    private List<ProductListModel> listData = new ArrayList<>();
     private Context context;
 
     public ProductListingAdapter(Context context, List<ProductListModel> data) {
-        this.context=context;
-        this.data=data;
+        this.context = context;
+        this.listData = data;
     }
 
 
     @Override
     public ProductListingAdapter.NumberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        context=parent.getContext();
-        LayoutInflater inflater=LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.product_list,parent,false);
-        NumberViewHolder numberViewHolder=new NumberViewHolder(view);
+        context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.product_list, parent, false);
+        NumberViewHolder numberViewHolder = new NumberViewHolder(view);
         return numberViewHolder;
 
     }
@@ -47,35 +52,47 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     }
 
     @Override
-    public int getItemCount()
-    {
-        return data.size();
+    public int getItemCount() {
+        return listData.size();
     }
 
-    public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-         TextView productName;
-         ImageView iconImageView;
-         public NumberViewHolder(View itemView){
+    public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView productName, productDescription, productPrice;
+        ImageView iconImageView;
+        RatingBar ratingBar;
+
+        //AsyncTask
+
+        public NumberViewHolder(View itemView) {
             super(itemView);
             iconImageView = (ImageView) itemView.findViewById(R.id.imgProductList);
-            productName=itemView.findViewById(R.id.txtProducListName);
+            productName = itemView.findViewById(R.id.txtProducListName);
+            productDescription = itemView.findViewById(R.id.txtProductListDescription);
+            productPrice = itemView.findViewById(R.id.txtProductListPrice);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+
             // to make toast in recycler view when click on row
             itemView.setOnClickListener(this);
             //new activity when click on particular item
+        }
+
+        void bind(int position) {
+            productListModel = listData.get(position);
+            productName.setText(productListModel.getName());
+            productDescription.setText(productListModel.getProducer());
+            productPrice.setText("Rs."+productListModel.getCost());
+            ratingBar.setRating(productListModel.getRating());
+            Glide.with(context).load(productListModel.getProduct_images()).into(iconImageView);
 
         }
-        void bind(int position){
 
-            productName.setText(String.valueOf("Product : "+position));
-
-        }
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
             // to make toast in recycler view when click on row
-             Toast.makeText(v.getContext(), (getAdapterPosition()+1+" OF "+10), Toast.LENGTH_SHORT).show();
-             Intent intent=new Intent(v.getContext(),ProductDetailedActivity.class);
-             intent.putExtra("ItemTitle",productName.getText().toString());
-             v.getContext().startActivity(intent);
+            Toast.makeText(view.getContext(), (getAdapterPosition() + 1 + " OF " + 10), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(view.getContext(), ProductDetailedActivity.class);
+            intent.putExtra("ItemTitle", productName.getText().toString());
+            view.getContext().startActivity(intent);
 
         }
     }

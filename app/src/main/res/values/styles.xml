@@ -58,18 +58,17 @@
     </style>
     <style name="txtProductListName">
         <item name="android:textColor">@color/black_color_text</item>
-        <item name="android:textSize">@dimen/fifteen</item>
+        <item name="android:textSize">@dimen/seventeen</item>
 
     </style>
     <style name="txtProductDescription">
         <item name="android:textColor">@color/color_grey</item>
-        <item name="android:textSize">@dimen/ten</item>
+        <item name="android:textSize">@dimen/thirteen</item>
     </style>
 
     <style name="txtProductPrice">
         <item name="android:textColor">@color/colorRed</item>
         <item name="android:textSize">@dimen/twenty</item>
-
         <item name="android:text">@string/product_price</item>
     </style>
 

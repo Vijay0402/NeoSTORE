@@ -21,6 +21,7 @@ public class HomeBannerSliderAdapter extends PagerAdapter {
     LayoutInflater inflater;
     Context context;
     ImageView imageView;
+    Integer[] imgSlider={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
 
     public HomeBannerSliderAdapter(Context context) {
         this.context=context;
@@ -43,7 +44,7 @@ public class HomeBannerSliderAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View imgLayout=inflater.inflate(R.layout.fragment_home,container,false);
         imageView=imgLayout.findViewById(R.id.imgViewPager);
-        imageView.setImageResource(R.drawable.slider_img1);
+        imageView.setImageResource(imgSlider[position]);
         container.addView(imgLayout,0);
         return imgLayout;
     }
