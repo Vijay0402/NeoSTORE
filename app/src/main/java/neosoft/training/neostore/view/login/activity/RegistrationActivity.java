@@ -1,6 +1,5 @@
 package neosoft.training.neostore.view.login.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +24,6 @@ import java.util.Map;
 import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.common.base.BaseAsyncTask;
-import neosoft.training.neostore.common.base.RegistrationAsyncTask;
 import neosoft.training.neostore.model.RegistrationModel;
 
 public class RegistrationActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener, BaseAsyncTask.onAsyncRequestComplete{
@@ -35,6 +35,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private CheckBox cbTC;
     private Button btnRegister;
     private Boolean bTerms = false;
+    private static final String TAG = RegistrationActivity.class.getSimpleName();
 
     private String url="http://staging.php-dev.in:8844/trainingapp/api/users/register";
 
@@ -153,29 +154,34 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         try {
             JSONObject jsonObject = new JSONObject(String.valueOf(response));
             int statusid = jsonObject.optInt("status");
-            JSONObject dataObject = jsonObject.optJSONObject("data");
-            RegistrationModel sampleModel = new RegistrationModel();
+//          JSONObject dataObject = jsonObject.optJSONObject("data");
 
-            sampleModel.setId(dataObject.optInt("id"));
-            sampleModel.setRole_id(dataObject.optInt("role_id"));
-            sampleModel.setFirst_name(dataObject.optString("first_name"));
-            sampleModel.setLast_name(dataObject.optString("last_name"));
-            sampleModel.setEmail(dataObject.optString("email"));
-            sampleModel.setUsername(dataObject.optString("username"));
-            sampleModel.setProfile_pic(dataObject.optString("profile_pic"));
-            sampleModel.setCountry_id(dataObject.optString("country_id"));
-            sampleModel.setGender(dataObject.optString("gender"));
-            sampleModel.setPhone_no(dataObject.optInt("phone_no"));
-            sampleModel.setDob(dataObject.optString("dob"));
-            sampleModel.setIs_active(dataObject.optBoolean("is_active"));
-            sampleModel.setCreated(dataObject.optString("created"));
-            sampleModel.setModified(dataObject.optString("modified"));
-            sampleModel.setAccess_token(dataObject.optString("access_token"));
+            Gson gson=new Gson();
+            RegistrationModel sampleModel=gson.fromJson(response.toString(),RegistrationModel.class);
+            Log.e(TAG, "asyncResponse: "+sampleModel.data.getUsername() );
+
+            /*sampleModel.data.setId(dataObject.optInt("id"));
+            sampleModel.data.setRole_id(dataObject.optInt("role_id"));
+            sampleModel.data.setFirst_name(dataObject.optString("first_name"));
+            sampleModel.data.setLast_name(dataObject.optString("last_name"));
+            sampleModel.data.setEmail(dataObject.optString("email"));
+            sampleModel.data.setUsername(dataObject.optString("username"));
+            sampleModel.data.setProfile_pic(dataObject.optString("profile_pic"));
+            sampleModel.data.setCountry_id(dataObject.optString("country_id"));
+            sampleModel.data.setGender(dataObject.optString("gender"));
+            sampleModel.data.setPhone_no(dataObject.optString("phone_no"));
+            sampleModel.data.setPhone_no(dataObject.optString("phone_no"));
+            sampleModel.data.setDob(dataObject.optString("dob"));
+            sampleModel.data.setIs_active(dataObject.optBoolean("is_active"));
+            sampleModel.data.setCreated(dataObject.optString("created"));
+            sampleModel.data.setModified(dataObject.optString("modified"));
+            sampleModel.data.setAccess_token(dataObject.optString("access_token"));*/
 
             Log.e("json",""+statusid);
             Intent intent=new Intent(this,LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+
         }
         catch (JSONException e){
 
@@ -183,5 +189,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
 
 
+    }
+
+    @Override
+    public void onFailure(Object response) {
+        Toast.makeText(this, "Registration not Successful", Toast.LENGTH_SHORT).show();
     }
 }

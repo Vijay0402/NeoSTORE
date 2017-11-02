@@ -59,7 +59,7 @@
                     />
 
                 <RatingBar
-                    android:id="@+id/prd_detailed_id"
+                    android:id="@+id/product_rating"
                     style="@style/RatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,7 +118,8 @@
 
             </android.support.v4.view.ViewPager>
 
-            <include layout="@layout/recycler_view" />
+
+            <include layout="@layout/recycler_view"/>
 
         </LinearLayout>
 
@@ -139,7 +140,7 @@
                 style="@style/txtDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/product_price"
+                android:text="@string/description"
 
                 />
 

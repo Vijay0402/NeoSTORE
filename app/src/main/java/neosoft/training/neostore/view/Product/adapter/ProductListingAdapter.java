@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import neosoft.training.neostore.R;
-import neosoft.training.neostore.model.ProductListModel;
+import neosoft.training.neostore.common.base.ProductListingData;
 import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 
 /**
@@ -25,14 +25,15 @@ import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
  */
 
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.NumberViewHolder> {
-
-    ProductListModel productListModel;
-    private List<ProductListModel> listData = new ArrayList<>();
+    ProductListingData productListModel;
+    private List<ProductListingData> listData = new ArrayList<>();
     private Context context;
+    private String productId;
 
-    public ProductListingAdapter(Context context, List<ProductListModel> data) {
+    public ProductListingAdapter(Context context, List<ProductListingData> data, String productId) {
         this.context = context;
         this.listData = data;
+        this.productId=productId;
     }
 
 
@@ -78,20 +79,23 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
         void bind(int position) {
             productListModel = listData.get(position);
+//            productListModel = listData.get(position);
             productName.setText(productListModel.getName());
             productDescription.setText(productListModel.getProducer());
             productPrice.setText("Rs."+productListModel.getCost());
             ratingBar.setRating(productListModel.getRating());
-            Glide.with(context).load(productListModel.getProduct_images()).into(iconImageView);
+            Glide.with(context).load(productListModel.getProductImages()).into(iconImageView);
 
         }
 
         @Override
         public void onClick(View view) {
             // to make toast in recycler view when click on row
-            Toast.makeText(view.getContext(), (getAdapterPosition() + 1 + " OF " + 10), Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), (getAdapterPosition() + 1 + " OF " + listData.size()), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(view.getContext(), ProductDetailedActivity.class);
             intent.putExtra("ItemTitle", productName.getText().toString());
+            intent.putExtra("product_category",productListModel.getProductCategoryId().toString());
+            intent.putExtra("product_Id",productListModel.getId().toString());
             view.getContext().startActivity(intent);
 
         }

@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +35,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private TextView txtForgot;
     private Context context = this;
     private String url = "http://staging.php-dev.in:8844/trainingapp/api/users/login";
+    private static final String TAG = LoginActivity.class.getSimpleName();
+
 
     @Override
     public int getContentView() {
@@ -96,10 +101,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         } else {
 
             //for Http post
-            Map<String ,Object> loginData = new HashMap<>();
+            Map<String, Object> loginData = new HashMap<>();
             loginData.put("email", edtUserHint.getText().toString());
             loginData.put("password", edtPassHint.getText().toString());
-            BaseAsyncTask loginHttpPost = new BaseAsyncTask(this,"POST", loginData);
+            BaseAsyncTask loginHttpPost = new BaseAsyncTask(this, "POST", loginData);
             loginHttpPost.execute(url);
 
         }
@@ -109,13 +114,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void asyncResponse(Object response) {
         try {
 
-            JSONObject jsonObject = new JSONObject((String) response);
-            int statusid = jsonObject.optInt("status");
-            if (statusid == 200) {
-                JSONObject dataObject = jsonObject.optJSONObject("data");
-                RegistrationModel sampleModel = new RegistrationModel();
+            Log.e(TAG, "asyncResponse: "+response );
 
-                sampleModel.setId(dataObject.optInt("id"));
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                RegistrationModel sampleModel = gson.fromJson(response.toString(), RegistrationModel.class);
+                Log.e(TAG, "asyncResponse: "+sampleModel.data.getUsername());
+
+                /*sampleModel.setId(dataObject.optInt("id"));
                 sampleModel.setRole_id(dataObject.optInt("role_id"));
                 sampleModel.setFirst_name(dataObject.optString("first_name"));
                 sampleModel.setLast_name(dataObject.optString("last_name"));
@@ -130,11 +135,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 sampleModel.setCreated(dataObject.optString("created"));
                 sampleModel.setModified(dataObject.optString("modified"));
                 sampleModel.setAccess_token(dataObject.optString("access_token"));
-
+*/
+               // Log.e(TAG, "asyncResponse: "+sampleModel.getEmail());
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Login", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("Username", String.valueOf(sampleModel.getUsername()));
-                editor.putString("Email", String.valueOf(sampleModel.getEmail()));
+                editor.putString("Username", String.valueOf(sampleModel.data.getUsername()));
+                editor.putString("Email", String.valueOf(sampleModel.data.getEmail()));
                 editor.commit();
 
                 //to pass navigation textview
@@ -145,13 +151,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 finish();
 
 
-                Log.e("json", "" + statusid);
-
-            } else {
-                Toast.makeText(this, "Email or password is wrong. try again", Toast.LENGTH_SHORT).show();
-            }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onFailure(Object response) {
+        Toast.makeText(this, "Email or password is wrong. try again", Toast.LENGTH_SHORT).show();
     }
 }

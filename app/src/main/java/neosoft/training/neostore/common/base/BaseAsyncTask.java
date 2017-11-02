@@ -38,7 +38,10 @@ public class BaseAsyncTask extends AsyncTask<Object, Object, Object> {
 
     public interface onAsyncRequestComplete {
         public void asyncResponse(Object response);
+        public void onFailure(Object response);
     }
+
+
 
     public BaseAsyncTask(Activity context, String method, Map<String, Object> mapData) {
         caller = (onAsyncRequestComplete) context;
@@ -61,6 +64,7 @@ public class BaseAsyncTask extends AsyncTask<Object, Object, Object> {
                 return get(address);
         if (method == "POST")
                 return post(address);
+
         return null;
 
     }
@@ -160,7 +164,10 @@ public class BaseAsyncTask extends AsyncTask<Object, Object, Object> {
 
     @Override
     protected void onPostExecute(Object object) {
+        if(statusCode==200)
         caller.asyncResponse(object);
+        else
+            caller.onFailure(object);
     }
 
 
