@@ -4,10 +4,13 @@ package neosoft.training.neostore.common.base;
  * Created by webwerks1 on 1/11/17.
  */
 
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductDetailImage {
+public class ProductDetailImage extends PagerAdapter {
 
     @SerializedName("id")
     @Expose
@@ -65,4 +68,13 @@ public class ProductDetailImage {
         this.modified = modified;
     }
 
+    @Override
+    public int getCount() {
+        return 0;
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return false;
+    }
 }
