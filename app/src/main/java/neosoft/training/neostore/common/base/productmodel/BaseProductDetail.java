@@ -1,6 +1,8 @@
-package neosoft.training.neostore.common.base;
+package neosoft.training.neostore.common.base.productmodel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import neosoft.training.neostore.common.base.productmodel.ProductDetailDataModel;
 
 /**
  * Created by webwerks1 on 2/11/17.

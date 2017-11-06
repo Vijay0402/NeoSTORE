@@ -1,7 +1,8 @@
 package neosoft.training.neostore.view.Product.activity;
 
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -20,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,16 +31,18 @@ import neosoft.training.neostore.common.ItemClickSupport;
 import neosoft.training.neostore.common.Utils;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.common.base.BaseAsyncTask;
-import neosoft.training.neostore.common.base.BaseProductDetail;
-import neosoft.training.neostore.common.base.ProductDetailDataModel;
-import neosoft.training.neostore.common.base.ProductDetailImage;
+import neosoft.training.neostore.common.base.ProductListingData;
+import neosoft.training.neostore.common.base.productmodel.BaseProductDetail;
+import neosoft.training.neostore.common.base.productmodel.ProductDetailDataModel;
+import neosoft.training.neostore.common.base.productmodel.ProductDetailImage;
 
+import neosoft.training.neostore.common.base.ratingmodel.BaseRatingModel;
+import neosoft.training.neostore.common.base.ratingmodel.RatingData;
 import neosoft.training.neostore.view.Product.adapter.ProductDetailedAdapter;
-import neosoft.training.neostore.view.home.adapter.HomeBannerSliderAdapter;
 import neosoft.training.neostore.view.Product.fragment.EnterQuantityFragment;
 import neosoft.training.neostore.view.Product.fragment.RatingPopupFragment;
 
-public class ProductDetailedActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, BaseAsyncTask.onAsyncRequestComplete {
+public class ProductDetailedActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, BaseAsyncTask.onAsyncRequestComplete, RatingBar.OnRatingBarChangeListener {
     
     Toolbar mToolbar;
     TextView mTxtToolbar;
@@ -48,9 +53,15 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     TextView txtProductName, txtProductCategory, txtProductDesc, txtPrice, txtSummary;
     RatingBar ratingBar;
     Map<String, Object> mapData = new HashMap<>();
+    Map<String, Object> mapData1 = new HashMap<>();
     String str;
+    String productId;
+    String imgURl;
     BaseProductDetail baseProductDetail;
     String url = "http://staging.php-dev.in:8844/trainingapp/api/products/getDetail";
+    String urlRating="http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
+
+    List<ProductDetailImage> data ;
 
     // Integer[] imgArray={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
     //  List<String> imgList=new ArrayList<>();
@@ -67,6 +78,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         imgShare = findViewById(R.id.imgShare);
         btnBuynow = findViewById(R.id.btnBuynow);
         btnRatenow = findViewById(R.id.ratenow);
+
         ratingBar = findViewById(R.id.product_rating);
         imgProduct = findViewById(R.id.imgZoomProductDetail);
 
@@ -80,17 +92,16 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-
-                       Glide.with(ProductDetailedActivity.this).load(setImage(position)).into(imgProduct);
+                        imgURl=setImage(position);
+                       Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
                     }
                 });
 
-
-        String productCategory = getIntent().getStringExtra("product_category");
-
-        String productId = getIntent().getStringExtra("product_Id");
+        productId = getIntent().getStringExtra("product_Id");
 
         mapData.put("product_id", productId);
+
+
         Log.e("ProductDetailedActivity", "initView: " + mapData);
         BaseAsyncTask baseAsyncTask = new BaseAsyncTask(this, "GET", mapData);
         baseAsyncTask.execute(url);
@@ -175,11 +186,51 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                 enterQuantityFragment.show(getSupportFragmentManager(), "Quantity Dialog");
                 break;
             case R.id.ratenow:
+
+                dialogShow();
+               /* ProductDetailDataModel productDetailDataModel = baseProductDetail.getData();
+                Bundle bundle= new Bundle();
+                bundle.putString("productId", productId);
+                bundle.putString("ItemName",str);
+                bundle.putString("Image",imgURl);
                 RatingPopupFragment ratingPopupFragment = new RatingPopupFragment();
-                ratingPopupFragment.show(getSupportFragmentManager(), "Rating Dialog");
+                ratingPopupFragment.setArguments(bundle);
+                ratingPopupFragment.show(getSupportFragmentManager(), "Rating Dialog");*/
+
                 break;
 
         }
+    }
+
+    private void dialogShow() {
+        Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.rating_popup);
+
+        TextView txtProduct=dialog.findViewById(R.id.txtItemName);
+        txtProduct.setText(str);
+
+        ImageView imgProduct=dialog.findViewById(R.id.imgItem);
+        Glide.with(this).load(imgURl).into(imgProduct);
+
+        dialog.getWindow().setLayout(1275, 1800);
+
+        RatingBar ratingProduct=dialog.findViewById(R.id.ratingBarPopup);
+        ratingProduct.setOnRatingBarChangeListener(ProductDetailedActivity.this);
+
+        Button btnRate=dialog.findViewById(R.id.btnSubmitRate);
+        btnRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ProductDetailedActivity.this, "Thank for your response", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        dialog.show();
+
     }
 
     @Override
@@ -203,10 +254,21 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(linearLayoutManager);
 
-            mCustomRecyclerAdapter = new ProductDetailedAdapter(this, baseProductDetail.getData().getProductImages());
+
+            mCustomRecyclerAdapter = new ProductDetailedAdapter(this,baseProductDetail.getData().getProductImages());
 
             mRecyclerView.setAdapter(mCustomRecyclerAdapter);
-            mCustomRecyclerAdapter.notifyDataSetChanged();
+
+            //Rating Pop up Dialog
+            Gson gson1=new Gson();
+            BaseRatingModel baseRatingModel=new BaseRatingModel();
+            baseRatingModel=gson1.fromJson(response.toString(),BaseRatingModel.class);
+
+            RatingData ratingData=baseRatingModel.getData();
+            ratingBar.setRating(ratingData.getRating());
+
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -229,4 +291,13 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
     }
 
+    @Override
+    public void onRatingChanged(RatingBar ratingProduct, float rated, boolean b) {
+        mapData1.put("rating",ratingProduct.getRating());
+        mapData1.put("product_id",productId);
+        BaseAsyncTask baseAsyncTask=new BaseAsyncTask(ProductDetailedActivity.this,"POST",mapData1);
+        baseAsyncTask.execute(urlRating);
+
+
+    }
 }

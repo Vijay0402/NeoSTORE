@@ -1,4 +1,4 @@
-package neosoft.training.neostore.common.base;
+package neosoft.training.neostore.common.base.productmodel;
 
 /**
  * Created by webwerks1 on 1/11/17.

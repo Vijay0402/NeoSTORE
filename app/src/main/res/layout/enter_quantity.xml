@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txtItemName"
+        android:id="@+id/txtItemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -19,7 +19,7 @@
         android:layout_width="@dimen/twoSixty"
         android:layout_height="@dimen/oneEighty"
         app:srcCompat="@drawable/slider_img3"
-        android:layout_below="@+id/txtItemName"
+        android:layout_below="@+id/txtItemname"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/thirtyThree"
         android:scaleType="centerCrop"

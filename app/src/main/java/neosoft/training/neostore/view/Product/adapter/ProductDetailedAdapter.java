@@ -1,7 +1,6 @@
 package neosoft.training.neostore.view.Product.adapter;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +11,13 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import neosoft.training.neostore.R;
-import neosoft.training.neostore.common.base.ProductDetailImage;
-import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
+import neosoft.training.neostore.common.base.productmodel.ProductDetailImage;
 
 /**
  * Created by webwerks1 on 10/10/17.
  */
 public class ProductDetailedAdapter extends RecyclerView.Adapter<ProductDetailedAdapter.NumberViewHolder> {
     List<ProductDetailImage>  data;
-
-    ProductDetailedActivity productDetailedActivity;
-
 
     private Context context;
 
@@ -49,7 +44,7 @@ public class ProductDetailedAdapter extends RecyclerView.Adapter<ProductDetailed
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return  data == null ? 0 : data.size();
 
     }
 

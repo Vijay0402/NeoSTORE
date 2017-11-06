@@ -1,53 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/txtItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/thirtyThree"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:text="@string/address_name"
-        android:textSize="25sp"
-        android:layout_marginBottom="@dimen/thirtyThree"/>
+        android:textSize="25sp" />
 
     <ImageView
         android:id="@+id/imgItem"
         android:layout_width="@dimen/twoSixty"
-        android:layout_height="@dimen/oneEighty"
-        app:srcCompat="@drawable/slider_img3"
-        android:layout_below="@+id/txtItemName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/thirtyThree"
+        android:layout_height="177dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
         />
 
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/ratingBarPopup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/twentyTwo"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:numStars="5"
         android:progressTint="@color/yellow"
-        android:stepSize="0.1"
-        android:layout_below="@+id/imgItem"
-        android:layout_centerHorizontal="true" />
+        android:stepSize="0.1" />
 
     <Button
         android:id="@+id/btnSubmitRate"
+        style="@style/btnSaveAddress"
         android:layout_width="@dimen/oneNinetyEight"
         android:layout_height="@dimen/fourtyEight"
-
-        android:text="@string/rate_now"
-        android:layout_below="@+id/ratingBar"
-        android:layout_centerHorizontal="true"
-        style="@style/btnSaveAddress"
-        android:layout_marginBottom="@dimen/thirtyThree"
-
-        />
-</RelativeLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:text="@string/rate_now" />
+</LinearLayout>
