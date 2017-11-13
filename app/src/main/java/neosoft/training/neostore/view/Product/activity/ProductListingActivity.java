@@ -36,6 +36,7 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
   private static final String TAG = ProductListingActivity.class.getSimpleName();
   private String url="http://staging.php-dev.in:8844/trainingapp/api/products/getList";
 
+
     @Override
     public int getContentView() {
         return R.layout.activity_product_listing;
@@ -121,7 +122,7 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
 
     @Override
     public void onFailure(Object response) {
-        Toast.makeText(context, "Data fetching error ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "ForgetModel fetching error ", Toast.LENGTH_SHORT).show();
     }
 }
 

@@ -57,14 +57,13 @@ public class ProductDetailedAdapter extends RecyclerView.Adapter<ProductDetailed
             iconImageView =  itemView.findViewById(R.id.imgProductDetailRecycler);
             // to make toast in recycler view when click on row
             itemView.setOnClickListener(this);
-            //new activity when click on particular item
+
 
         }
         void bind(int position){
 
              ProductDetailImage productDetailImage=data.get(position);
              String image=productDetailImage.getImage();
-
              Glide.with(context).load(image).into(iconImageView);
 
         }

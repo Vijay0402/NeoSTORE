@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ import neosoft.training.neostore.R;
 import neosoft.training.neostore.common.base.BaseAsyncTask;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.model.RegistrationModel;
+import neosoft.training.neostore.view.Product.fragment.EnterQuantityFragment;
 import neosoft.training.neostore.view.home.activity.HomeActivity;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, BaseAsyncTask.onAsyncRequestComplete {
@@ -141,12 +143,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("Username", String.valueOf(sampleModel.data.getUsername()));
                 editor.putString("Email", String.valueOf(sampleModel.data.getEmail()));
+                editor.putString("AccessToken",String.valueOf(sampleModel.data.getAccess_token()));
                 editor.commit();
+                Log.e(TAG, "LoginActivity: "+sampleModel.data.getAccess_token());
+
+//              EnterQuantityFragment enterQuantityFragment = new EnterQuantityFragment();
+//              Bundle bundle=new Bundle();
+//              bundle.putString("accessToken",sampleModel.data.getAccess_token());
+//              enterQuantityFragment.setArguments(bundle);
+
 
                 //to pass navigation textview
                 Intent intent = new Intent(this, HomeActivity.class);
-               /* intent.putExtra("username",sampleModel.getUsername());
-                intent.putExtra("email", sampleModel.getEmail());*/
                 startActivity(intent);
                 finish();
 
@@ -159,5 +167,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onFailure(Object response) {
         Toast.makeText(this, "Email or password is wrong. try again", Toast.LENGTH_SHORT).show();
+
     }
 }

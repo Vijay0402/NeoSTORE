@@ -57,14 +57,14 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     String str;
     String productId;
     String imgURl;
+    String firstRecyclerImage;
     BaseProductDetail baseProductDetail;
     String url = "http://staging.php-dev.in:8844/trainingapp/api/products/getDetail";
     String urlRating="http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
 
+
     List<ProductDetailImage> data ;
 
-    // Integer[] imgArray={R.drawable.slider_img1,R.drawable.slider_img2,R.drawable.slider_img3,R.drawable.slider_img4};
-    //  List<String> imgList=new ArrayList<>();
     @Override
     public int getContentView() {
         return R.layout.activity_product_detailed;
@@ -87,13 +87,14 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         txtProductDesc = findViewById(R.id.txtProductDetailDescription);
         txtPrice = findViewById(R.id.prd_detail_price);
         txtSummary = findViewById(R.id.txtDescriptionText);
-        
+
         ItemClickSupport.addTo(mRecyclerView)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         imgURl=setImage(position);
-                       Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
+                        Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
+
                     }
                 });
 
@@ -101,18 +102,15 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
         mapData.put("product_id", productId);
 
-
         Log.e("ProductDetailedActivity", "initView: " + mapData);
         BaseAsyncTask baseAsyncTask = new BaseAsyncTask(this, "GET", mapData);
         baseAsyncTask.execute(url);
-
 
     }
 
     @Override
     public void setListeners() {
         imgShare.setOnClickListener(this);
-
         btnBuynow.setOnClickListener(this);
         btnRatenow.setOnClickListener(this);
 
@@ -183,19 +181,17 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                 break;
             case R.id.btnBuynow:
                 EnterQuantityFragment enterQuantityFragment = new EnterQuantityFragment();
-                enterQuantityFragment.show(getSupportFragmentManager(), "Quantity Dialog");
-                break;
-            case R.id.ratenow:
-
-                dialogShow();
-               /* ProductDetailDataModel productDetailDataModel = baseProductDetail.getData();
-                Bundle bundle= new Bundle();
-                bundle.putString("productId", productId);
+                Bundle bundle=new Bundle();
+                bundle.putString("productId",productId);
                 bundle.putString("ItemName",str);
                 bundle.putString("Image",imgURl);
-                RatingPopupFragment ratingPopupFragment = new RatingPopupFragment();
-                ratingPopupFragment.setArguments(bundle);
-                ratingPopupFragment.show(getSupportFragmentManager(), "Rating Dialog");*/
+                bundle.putString("SetFirstImage",firstRecyclerImage);
+                enterQuantityFragment.setArguments(bundle);
+                enterQuantityFragment.show(getSupportFragmentManager(), "Quantity Dialog");
+
+                break;
+            case R.id.ratenow:
+                dialogShow();
 
                 break;
 
@@ -224,9 +220,9 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
             @Override
             public void onClick(View view) {
                 Toast.makeText(ProductDetailedActivity.this, "Thank for your response", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
-
 
 
         dialog.show();
@@ -257,6 +253,8 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
             mCustomRecyclerAdapter = new ProductDetailedAdapter(this,baseProductDetail.getData().getProductImages());
 
+            firstRecyclerImage=setImage(0);
+            Glide.with(ProductDetailedActivity.this).load(firstRecyclerImage).into(imgProduct);//data is in json response so it set automatically
             mRecyclerView.setAdapter(mCustomRecyclerAdapter);
 
             //Rating Pop up Dialog
@@ -268,8 +266,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
             ratingBar.setRating(ratingData.getRating());
 
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -279,11 +275,12 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
     @Override
     public void onFailure(Object response) {
-        Toast.makeText(this, "Data Missing", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "ForgetModel Missing", Toast.LENGTH_SHORT).show();
 
     }
 
     public String setImage(int position) {
+
         ProductDetailImage productDetailImage;
         productDetailImage = baseProductDetail.getData().getProductImages().get(position);
         String image = productDetailImage.getImage();
@@ -297,7 +294,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         mapData1.put("product_id",productId);
         BaseAsyncTask baseAsyncTask=new BaseAsyncTask(ProductDetailedActivity.this,"POST",mapData1);
         baseAsyncTask.execute(urlRating);
-
 
     }
 }

@@ -51,7 +51,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnQtySubmit"
         android:layout_width="@dimen/oneNinetyEight"
         android:layout_height="@dimen/fourtyEight"
         android:text="@string/submit"

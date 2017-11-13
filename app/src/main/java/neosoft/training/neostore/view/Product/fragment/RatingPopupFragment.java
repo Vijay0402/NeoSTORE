@@ -78,6 +78,8 @@ public class RatingPopupFragment extends DialogFragment implements View.OnClickL
         switch (view.getId()) {
             case R.id.btnSubmitRate:
                 Toast.makeText(getActivity(), "Thank you for your Response", Toast.LENGTH_SHORT).show();
+
+
                 break;
         }
     }
