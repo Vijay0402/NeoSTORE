@@ -25,7 +25,7 @@ import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
  */
 
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.NumberViewHolder> {
-    ProductListingData productListModel;
+    ProductListingData productListingData;
     private List<ProductListingData> listData = new ArrayList<>();
     private Context context;
     private String productId;
@@ -33,7 +33,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     public ProductListingAdapter(Context context, List<ProductListingData> data, String productId) {
         this.context = context;
         this.listData = data;
-        this.productId=productId;
+        this.productId = productId;
     }
 
 
@@ -57,6 +57,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         return listData.size();
     }
 
+
     public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView productName, productDescription, productPrice;
         ImageView iconImageView;
@@ -78,26 +79,26 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         }
 
         void bind(int position) {
-            productListModel = listData.get(position);
-//            productListModel = listData.get(position);
-            productName.setText(productListModel.getName());
-            productDescription.setText(productListModel.getProducer());
-            productPrice.setText("Rs."+productListModel.getCost());
-            ratingBar.setRating(productListModel.getRating());
-            Glide.with(context).load(productListModel.getProductImages()).into(iconImageView);
-
+                productListingData = listData.get(position);
+                productName.setText(productListingData.getName());
+                productDescription.setText(productListingData.getProducer());
+                productPrice.setText("Rs." + productListingData.getCost());
+                ratingBar.setRating(productListingData.getRating());
+                Glide.with(context).load(productListingData.getProductImages()).into(iconImageView);
         }
 
         @Override
         public void onClick(View view) {
-            // to make toast in recycler view when click on row
-            Toast.makeText(view.getContext(), (getAdapterPosition() + 1 + " OF " + listData.size()), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(view.getContext(), ProductDetailedActivity.class);
-            intent.putExtra("ItemTitle", productName.getText().toString());
-            intent.putExtra("product_category",productListModel.getProductCategoryId().toString());
-            intent.putExtra("product_Id",productListModel.getId().toString());
-            view.getContext().startActivity(intent);
 
+            productListingData = listData.get(getAdapterPosition());
+            Toast.makeText(context, (getAdapterPosition() + 1 + " OF " + listData.size()), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, ProductDetailedActivity.class);
+            intent.putExtra("ItemTitle", productListingData.getName());
+            intent.putExtra("product_category_id", productListingData.getProductCategoryId().toString());
+            intent.putExtra("product_id", productListingData.getId().toString());
+            context.startActivity(intent);
         }
     }
+
+
 }

@@ -49,8 +49,8 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        String userEmail=edtEmail.getText().toString();
-        sendPost(userEmail);
+        String email=edtEmail.getText().toString();
+        sendPost(email);
 
     }
 

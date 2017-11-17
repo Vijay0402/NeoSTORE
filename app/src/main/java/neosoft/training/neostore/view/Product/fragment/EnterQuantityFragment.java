@@ -30,6 +30,7 @@ import retrofit2.Response;
  */
 
 public class EnterQuantityFragment extends DialogFragment implements View.OnClickListener {
+
     Button btnSubmit;
     TextView txtItemname;
     EditText edtQuantity;
@@ -66,8 +67,6 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
 
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences("Login", Context.MODE_PRIVATE);
         access=sharedPreferences.getString("AccessToken","");
-
-
         return builder.create();
 
     }
@@ -79,7 +78,6 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
 
                 quantity=edtQuantity.getText().toString();
                 addToCart(access, prodId,quantity);
-
                 Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
                 getActivity().finish();
                 break;
@@ -106,7 +104,6 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
 
             }
         });
-
     }
 
 

@@ -62,7 +62,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     String url = "http://staging.php-dev.in:8844/trainingapp/api/products/getDetail";
     String urlRating="http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
 
-
     List<ProductDetailImage> data ;
 
     @Override
@@ -94,12 +93,10 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         imgURl=setImage(position);
                         Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
-
                     }
                 });
 
-        productId = getIntent().getStringExtra("product_Id");
-
+        productId = getIntent().getStringExtra("product_id");
         mapData.put("product_id", productId);
 
         Log.e("ProductDetailedActivity", "initView: " + mapData);
@@ -144,9 +141,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     public void onPageSelected(int position) {
         mRecyclerView.smoothScrollToPosition(position);
 
-
     }
-
 
     @Override
     public void onPageScrollStateChanged(int state) {
@@ -237,6 +232,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
             baseProductDetail = gson.fromJson(response.toString(), BaseProductDetail.class);
 
             ProductDetailDataModel productDetailDataModel = baseProductDetail.getData();
+
             Utils utils = new Utils();
 
             txtProductName.setText(productDetailDataModel.getName());
@@ -245,7 +241,6 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
             txtPrice.setText("Rs." + productDetailDataModel.getCost());
             txtSummary.setText(productDetailDataModel.getDescription());
             ratingBar.setRating(productDetailDataModel.getRating());
-
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -290,8 +285,10 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
     @Override
     public void onRatingChanged(RatingBar ratingProduct, float rated, boolean b) {
+
         mapData1.put("rating",ratingProduct.getRating());
         mapData1.put("product_id",productId);
+
         BaseAsyncTask baseAsyncTask=new BaseAsyncTask(ProductDetailedActivity.this,"POST",mapData1);
         baseAsyncTask.execute(urlRating);
 

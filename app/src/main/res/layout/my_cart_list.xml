@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -9,7 +11,13 @@
     android:layout_marginBottom="@dimen/thirteen"
 
     >
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imgOrder"
         android:layout_width="@dimen/eightyThree"
@@ -18,8 +26,6 @@
         android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/thirteen"
         android:layout_marginRight="@dimen/thirteen"
-
-
 
         />
 
@@ -75,13 +81,13 @@
 
             <TextView
                 android:id="@+id/txtOrderPrice"
+                style="@style/Price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                style="@style/Price"
-                android:layout_marginEnd="25dp"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginEnd="25dp"
+                android:text="Price" />
 
         </RelativeLayout>
 
@@ -89,5 +95,9 @@
 
 
     </LinearLayout>
+
+</LinearLayout>
+ </ScrollView>
+
 </LinearLayout>
 

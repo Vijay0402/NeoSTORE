@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -19,9 +20,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.common.ItemClickSupport;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.common.base.BaseAsyncTask;
 import neosoft.training.neostore.common.base.BaseProductListing;
+import neosoft.training.neostore.common.base.ProductListingData;
 import neosoft.training.neostore.view.Product.adapter.ProductListingAdapter;
 
 public class ProductListingActivity extends BaseActivity implements BaseAsyncTask.onAsyncRequestComplete {
@@ -35,7 +38,7 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
   private String productId;
   private static final String TAG = ProductListingActivity.class.getSimpleName();
   private String url="http://staging.php-dev.in:8844/trainingapp/api/products/getList";
-
+  BaseProductListing sampleModel;
 
     @Override
     public int getContentView() {
@@ -56,6 +59,19 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
         BaseAsyncTask baseAsyncTask=new BaseAsyncTask(this,"GET",mapData);
         baseAsyncTask.execute(url);
 
+//        ItemClickSupport.addTo(mRecyclerView)
+//                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//                        ProductListingData productListingData = sampleModel.getData().get(position);
+//                        Toast.makeText(ProductListingActivity.this, (position + 1 + " OF " + sampleModel.getData().size()), Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(context, ProductDetailedActivity.class);
+//                        intent.putExtra("ItemTitle", productListingData.getName());
+//                        intent.putExtra("product_category_id",productListingData.getProductCategoryId().toString());
+//                        intent.putExtra("product_id",productListingData.getId().toString());
+//                        context.startActivity(intent);
+//                    }
+//                });
      }
 
     @Override
@@ -69,6 +85,7 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.reg_arrow);
+
         String str=getIntent().getStringExtra("Title");
         productToolbarTitle.setText(str);
         //productToolbarTitle.setText(R.string.toolar_product_header);
@@ -101,7 +118,7 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
     public void asyncResponse(Object response) {
 
         Gson gson = new GsonBuilder().serializeNulls().create();
-        BaseProductListing sampleModel = gson.fromJson(response.toString(), BaseProductListing.class);
+        sampleModel = gson.fromJson(response.toString(), BaseProductListing.class);
         Log.e("ProductListActivity", "asyncResponse: "+sampleModel.getData());
 
                 mCustomRecyclerAdapter = new ProductListingAdapter(this,sampleModel.getData(),productId);

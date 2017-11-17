@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import java.util.List;
@@ -51,6 +52,7 @@ public class ProductDetailedAdapter extends RecyclerView.Adapter<ProductDetailed
     public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView iconImageView;
+        TextView txt;
 
         public NumberViewHolder(View itemView){
             super(itemView);
@@ -67,7 +69,7 @@ public class ProductDetailedAdapter extends RecyclerView.Adapter<ProductDetailed
              Glide.with(context).load(image).into(iconImageView);
 
         }
-//
+
         @Override
         public void onClick(View view) {
 

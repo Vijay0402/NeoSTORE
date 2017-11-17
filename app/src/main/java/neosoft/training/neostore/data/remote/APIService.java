@@ -2,6 +2,7 @@ package neosoft.training.neostore.data.remote;
 
 import neosoft.training.neostore.model.EnterQuantityModel;
 import neosoft.training.neostore.model.ForgetModel;
+import neosoft.training.neostore.model.MyCartModel;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -24,6 +25,10 @@ public interface APIService {
     Call<EnterQuantityModel> cartPost(@Header("access_token") String access,
                                       @Field("product_id") String productId,
                                       @Field("quantity") String quantity);
+
+
+    @GET("cart")
+    Call<MyCartModel> getItemListCart(@Header("access_token") String accessToken);
 
 
 }
