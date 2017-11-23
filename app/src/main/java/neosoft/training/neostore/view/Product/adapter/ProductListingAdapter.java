@@ -85,6 +85,9 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
                 productPrice.setText("Rs." + productListingData.getCost());
                 ratingBar.setRating(productListingData.getRating());
                 Glide.with(context).load(productListingData.getProductImages()).into(iconImageView);
+
+
+
         }
 
         @Override
@@ -97,6 +100,8 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
             intent.putExtra("product_category_id", productListingData.getProductCategoryId().toString());
             intent.putExtra("product_id", productListingData.getId().toString());
             context.startActivity(intent);
+
+
         }
     }
 

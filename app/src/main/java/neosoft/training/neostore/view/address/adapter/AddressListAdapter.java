@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.view.address.activity.AddAddressData;
 
 /**
  * Created by webwerks1 on 11/10/17.
@@ -19,8 +22,10 @@ import neosoft.training.neostore.R;
 public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.NumberViewHolder> {
 
     private Context context;
+    ArrayList<AddAddressData> arrayListAddress;
 
-    public AddressListAdapter(Context context) {
+    public AddressListAdapter(Context context, ArrayList<AddAddressData> arrayListAddress) {
+        this.arrayListAddress=arrayListAddress;
         this.context=context;
 
     }
@@ -37,15 +42,18 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
 
     @Override
     public void onBindViewHolder(NumberViewHolder holder, int position) {
-
       holder.bind(position);
-
 
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return arrayListAddress==null ? 0 : arrayListAddress.size();
+    }
+
+    public void notifyData(ArrayList<AddAddressData> arrayListAddress) {
+        this.arrayListAddress=arrayListAddress;
+        notifyDataSetChanged();
     }
 
     public class NumberViewHolder extends ViewHolder implements View.OnClickListener {
@@ -54,7 +62,7 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
 
         public NumberViewHolder(View view) {
             super(view);
-            txtName=view.findViewById(R.id.txtAddressListShipping);
+            txtName=view.findViewById(R.id.txt_address_name);
             txtAddress=view.findViewById(R.id.txtAddressListDescription);
             clear=view.findViewById(R.id.imgClear);
         }
@@ -65,7 +73,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         }
 
         public void bind(int position) {
-            txtName.setText(R.string.address);
+            txtName.setText(arrayListAddress.get(position).getUserAddress());
+
         }
     }
 }

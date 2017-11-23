@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_recyclerview"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/five"
-
+    android:padding="5dp"
     >
 
     <ImageView
         android:id="@+id/imgProductDetailRecycler"
         android:layout_width="@dimen/onetwenty"
         android:layout_height="@dimen/ninety"
-        android:layout_marginLeft="@dimen/ten"
-        android:paddingStart="@dimen/five"
         android:scaleType="centerCrop"
-        android:layout_marginBottom="@dimen/twenty"
+        android:padding="5dp"
         />
 
 </LinearLayout>

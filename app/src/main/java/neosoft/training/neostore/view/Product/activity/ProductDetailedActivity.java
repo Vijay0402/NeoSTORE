@@ -2,6 +2,7 @@ package neosoft.training.neostore.view.Product.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +23,6 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,19 +31,17 @@ import neosoft.training.neostore.common.ItemClickSupport;
 import neosoft.training.neostore.common.Utils;
 import neosoft.training.neostore.common.base.BaseActivity;
 import neosoft.training.neostore.common.base.BaseAsyncTask;
-import neosoft.training.neostore.common.base.ProductListingData;
-import neosoft.training.neostore.common.base.productmodel.BaseProductDetail;
-import neosoft.training.neostore.common.base.productmodel.ProductDetailDataModel;
+import neosoft.training.neostore.common.base.productmodel.ProductDetailModel;
+import neosoft.training.neostore.common.base.productmodel.ProductDetailData;
 import neosoft.training.neostore.common.base.productmodel.ProductDetailImage;
 
 import neosoft.training.neostore.common.base.ratingmodel.BaseRatingModel;
 import neosoft.training.neostore.common.base.ratingmodel.RatingData;
 import neosoft.training.neostore.view.Product.adapter.ProductDetailedAdapter;
 import neosoft.training.neostore.view.Product.fragment.EnterQuantityFragment;
-import neosoft.training.neostore.view.Product.fragment.RatingPopupFragment;
 
 public class ProductDetailedActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, BaseAsyncTask.onAsyncRequestComplete, RatingBar.OnRatingBarChangeListener {
-    
+
     Toolbar mToolbar;
     TextView mTxtToolbar;
     RecyclerView mRecyclerView;
@@ -58,11 +56,14 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     String productId;
     String imgURl;
     String firstRecyclerImage;
-    BaseProductDetail baseProductDetail;
+    ProductDetailModel productDetailModel;
     String url = "http://staging.php-dev.in:8844/trainingapp/api/products/getDetail";
-    String urlRating="http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
+    String urlRating = "http://staging.php-dev.in:8844/trainingapp/api/products/setRating";
+    int oldPos = 0, newPos = 0;
 
-    List<ProductDetailImage> data ;
+
+    boolean selected;
+    List<ProductDetailImage> data;
 
     @Override
     public int getContentView() {
@@ -70,6 +71,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     }
 
     public void initView() {
+
 //        viewPager=findViewById(R.id.view_pager_prod_detailed);
         mToolbar = findViewById(R.id.toolbar);
         mTxtToolbar = mToolbar.findViewById(R.id.toolbartxtViewTitle);
@@ -87,14 +89,32 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
         txtPrice = findViewById(R.id.prd_detail_price);
         txtSummary = findViewById(R.id.txtDescriptionText);
 
-        ItemClickSupport.addTo(mRecyclerView)
+
+
+
+        /*ItemClickSupport.addTo(mRecyclerView)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        imgURl=setImage(position);
+                        imgURl = setImage(position);
+
                         Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
                     }
-                });
+                });*/
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        try {
+                            mCustomRecyclerAdapter.setSelected(position);
+                            imgURl = setImage(position);
+                            Glide.with(ProductDetailedActivity.this).load(imgURl).into(imgProduct);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                })
+        );
 
         productId = getIntent().getStringExtra("product_id");
         mapData.put("product_id", productId);
@@ -176,11 +196,11 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
                 break;
             case R.id.btnBuynow:
                 EnterQuantityFragment enterQuantityFragment = new EnterQuantityFragment();
-                Bundle bundle=new Bundle();
-                bundle.putString("productId",productId);
-                bundle.putString("ItemName",str);
-                bundle.putString("Image",imgURl);
-                bundle.putString("SetFirstImage",firstRecyclerImage);
+                Bundle bundle = new Bundle();
+                bundle.putString("productId", productId);
+                bundle.putString("ItemName", str);
+                bundle.putString("Image", imgURl);
+                bundle.putString("SetFirstImage", firstRecyclerImage);
                 enterQuantityFragment.setArguments(bundle);
                 enterQuantityFragment.show(getSupportFragmentManager(), "Quantity Dialog");
 
@@ -194,23 +214,23 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     }
 
     private void dialogShow() {
-        Dialog dialog=new Dialog(this);
+        Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.rating_popup);
 
-        TextView txtProduct=dialog.findViewById(R.id.txtItemName);
+        TextView txtProduct = dialog.findViewById(R.id.txtItemName);
         txtProduct.setText(str);
 
-        ImageView imgProduct=dialog.findViewById(R.id.imgItem);
+        ImageView imgProduct = dialog.findViewById(R.id.imgItem);
         Glide.with(this).load(imgURl).into(imgProduct);
 
         dialog.getWindow().setLayout(1275, 1800);
 
-        RatingBar ratingProduct=dialog.findViewById(R.id.ratingBarPopup);
+        RatingBar ratingProduct = dialog.findViewById(R.id.ratingBarPopup);
         ratingProduct.setOnRatingBarChangeListener(ProductDetailedActivity.this);
 
-        Button btnRate=dialog.findViewById(R.id.btnSubmitRate);
+        Button btnRate = dialog.findViewById(R.id.btnSubmitRate);
         btnRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -229,37 +249,38 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
 
         try {
             Gson gson = new Gson();
-            baseProductDetail = gson.fromJson(response.toString(), BaseProductDetail.class);
+            productDetailModel = gson.fromJson(response.toString(), ProductDetailModel.class);
 
-            ProductDetailDataModel productDetailDataModel = baseProductDetail.getData();
+            ProductDetailData productDetailData = productDetailModel.getData();
 
             Utils utils = new Utils();
 
-            txtProductName.setText(productDetailDataModel.getName());
-            txtProductCategory.setText(utils.categoryFromId(productDetailDataModel.getProductCategoryId()));
-            txtProductDesc.setText(productDetailDataModel.getProducer());
-            txtPrice.setText("Rs." + productDetailDataModel.getCost());
-            txtSummary.setText(productDetailDataModel.getDescription());
-            ratingBar.setRating(productDetailDataModel.getRating());
+            txtProductName.setText(productDetailData.getName());
+            txtProductCategory.setText(utils.categoryFromId(productDetailData.getProductCategoryId()));
+            txtProductDesc.setText(productDetailData.getProducer());
+            txtPrice.setText("Rs." + productDetailData.getCost());
+            txtSummary.setText(productDetailData.getDescription());
+            ratingBar.setRating(productDetailData.getRating());
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             mRecyclerView.setLayoutManager(linearLayoutManager);
 
 
-            mCustomRecyclerAdapter = new ProductDetailedAdapter(this,baseProductDetail.getData().getProductImages());
+            mCustomRecyclerAdapter = new ProductDetailedAdapter(this, productDetailModel.getData().getProductImages(),imgProduct);
 
-            firstRecyclerImage=setImage(0);
+            firstRecyclerImage = setImage(0);
             Glide.with(ProductDetailedActivity.this).load(firstRecyclerImage).into(imgProduct);//data is in json response so it set automatically
             mRecyclerView.setAdapter(mCustomRecyclerAdapter);
 
             //Rating Pop up Dialog
-            Gson gson1=new Gson();
-            BaseRatingModel baseRatingModel=new BaseRatingModel();
-            baseRatingModel=gson1.fromJson(response.toString(),BaseRatingModel.class);
+            Gson gson1 = new Gson();
+            BaseRatingModel baseRatingModel = new BaseRatingModel();
+            baseRatingModel = gson1.fromJson(response.toString(), BaseRatingModel.class);
 
-            RatingData ratingData=baseRatingModel.getData();
+            RatingData ratingData = baseRatingModel.getData();
             ratingBar.setRating(ratingData.getRating());
 
+            mCustomRecyclerAdapter.notifyDataSetChanged();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -277,7 +298,7 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     public String setImage(int position) {
 
         ProductDetailImage productDetailImage;
-        productDetailImage = baseProductDetail.getData().getProductImages().get(position);
+        productDetailImage = productDetailModel.getData().getProductImages().get(position);
         String image = productDetailImage.getImage();
         return image;
 
@@ -286,10 +307,10 @@ public class ProductDetailedActivity extends BaseActivity implements ViewPager.O
     @Override
     public void onRatingChanged(RatingBar ratingProduct, float rated, boolean b) {
 
-        mapData1.put("rating",ratingProduct.getRating());
-        mapData1.put("product_id",productId);
+        mapData1.put("rating", ratingProduct.getRating());
+        mapData1.put("product_id", productId);
 
-        BaseAsyncTask baseAsyncTask=new BaseAsyncTask(ProductDetailedActivity.this,"POST",mapData1);
+        BaseAsyncTask baseAsyncTask = new BaseAsyncTask(ProductDetailedActivity.this, "POST", mapData1);
         baseAsyncTask.execute(urlRating);
 
     }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by webwerks1 on 2/11/17.
  */
 
-    public class ProductDetailDataModel {
+    public class ProductDetailData {
 
         @SerializedName("id")
         @Expose

@@ -9,7 +9,7 @@
            <size
                android:width="20dp"
                android:height="20dp"
-               ></size>
+               />
         </shape>
     </item>
 </layer-list>

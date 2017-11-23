@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import neosoft.training.neostore.R;
+import neosoft.training.neostore.model.OrderListData;
 import neosoft.training.neostore.view.Product.activity.ProductDetailedActivity;
 import neosoft.training.neostore.view.order.activity.MyOrderActivity;
 import neosoft.training.neostore.view.order.activity.OrderIdActivity;
@@ -21,9 +24,11 @@ import neosoft.training.neostore.view.order.activity.OrderIdActivity;
 public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.NumberViewHolder> {
 
     private Context context;
+    List<OrderListData> listOrderData;
 
-    public MyOrderAdapter(Context context) {
+    public MyOrderAdapter(Context context, List<OrderListData> listOrderData) {
         this.context=context;
+        this.listOrderData=listOrderData;
 
     }
 
@@ -44,11 +49,13 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.NumberVi
 
     @Override
     public int getItemCount() {
-        return 4;
+        return listOrderData == null ? 0 : listOrderData.size();
     }
 
     public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         TextView txtOrderValue, txtOrderDateValue,txtOrderPrice;
+
         public NumberViewHolder(View itemView) {
             super(itemView);
         txtOrderValue = itemView.findViewById(R.id.orderIDValue);
@@ -69,9 +76,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.NumberVi
         }
 
         public void bind(int position) {
-         txtOrderValue.setText(""+position);
-         txtOrderDateValue.setText(""+position);
-         txtOrderPrice.setText("Rs. "+position);
+         txtOrderValue.setText(""+listOrderData.get(position).getId());
+         txtOrderDateValue.setText(""+listOrderData.get(position).getCreated());
+         txtOrderPrice.setText("Rs. "+listOrderData.get(position).getCost());
 
         }
     }

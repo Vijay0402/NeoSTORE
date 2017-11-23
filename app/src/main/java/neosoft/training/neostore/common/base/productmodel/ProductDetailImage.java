@@ -28,6 +28,17 @@ public class ProductDetailImage extends PagerAdapter {
     @Expose
     private String modified;
 
+
+    boolean selected;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
     public Integer getId() {
         return id;
     }

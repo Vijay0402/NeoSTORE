@@ -39,6 +39,7 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
     String prodId;
     String access;
     String quantity;
+    int totalCartProduct;
     private static final String TAG = EnterQuantityFragment.class.getSimpleName();
 
 
@@ -75,7 +76,6 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnQtySubmit:
-
                 quantity=edtQuantity.getText().toString();
                 addToCart(access, prodId,quantity);
                 Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
@@ -94,7 +94,7 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
                 if(response.isSuccessful()) {
                     EnterQuantityModel data=response.body();//body() convert from Json to pojo
                     Log.i(TAG, "Post submitted to API." + response.body().toString());
-
+                     totalCartProduct=data.getTotalCarts();
                 }
             }
 

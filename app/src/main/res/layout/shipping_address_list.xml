@@ -30,7 +30,7 @@
 
         <TextView
            android:layout_marginLeft="@dimen/twelve"
-            android:id="@+id/txtAddressListShipping"
+            android:id="@+id/txt_address_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address_name"
@@ -46,8 +46,8 @@
             android:text="@string/place_order"
             style="@style/txtAddressListDescription"
             android:layout_marginTop="@dimen/five"
-            android:layout_below="@+id/txtAddressListShipping"
-            android:layout_alignStart="@+id/txtAddressListShipping"
+            android:layout_below="@+id/txt_address_name"
+            android:layout_alignStart="@+id/txt_address_name"
 
             />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/clear"
 
-            android:layout_alignTop="@+id/txtAddressListShipping"
+            android:layout_alignTop="@+id/txt_address_name"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp" />
 
